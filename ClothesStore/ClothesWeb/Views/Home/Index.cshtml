@@ -1,8 +1,53 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Главная страница - Управление товарами</title>
+    <style>
+   
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .menu-list {
+            list-style: none;
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>I'm Pibble</p>
-</div>
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Меню </h1>
+
+        <ul class="menu-list">
+            <li class="menu-item">
+                <a href="/Purchase/SellProduct"> Новая покупка</a>
+            </li>
+
+            <li class="menu-item">
+                <a href="/Return/ReturnProduct">Оформить возврат</a>
+            </li>
+
+            <li class="menu-item">
+                <a href="/Catalog/SearchInCatalog"> Каталог товаров</a>
+            </li>
+
+            <li class="menu-item">
+                <a href="/Statistics/ViewSaleReport">Смотреть статистику</a>
+            </li>
+
+            <li class="menu-item">
+                <a href="/Inventory/WriteOff"> Списать товар</a>
+            </li>
+
+        </ul>
+
+    </div>
+</body>
+</html>
