@@ -1,0 +1,42 @@
+﻿@model IEnumerable<ClothesWeb.Models.Product>
+
+@{
+    ViewData["Title"] = "Каталог";
+}
+
+<h1 class="text-center my-4">Каталог</h1>
+
+<div class="container">
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">@item.Name</h5>
+                        <p class="card-text text-muted">
+                            Цена: @item.Price.ToString("C")
+                        </p>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<style>
+    .card {
+        border-radius: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+    h1 {
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+</style>

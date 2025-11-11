@@ -1,4 +1,6 @@
-﻿namespace ClothesWeb.Models
+﻿
+
+namespace ClothesWeb.Models
 {
     public class Product
     {
