@@ -15,12 +15,42 @@ namespace ClothesWeb.Controllers
             _context = context;
         }
 
-        public IActionResult Catalog()
+        public IActionResult Catalog(string searchString)
         {
-            var products = _context.Products.ToList();
-            return View(products);
+            var products = from p in _context.Products
+                           select p;
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                products = products.Where(p => p.Name.Contains(searchString));
+            }
+
+            return View(products.ToList());
         }
 
+        [HttpGet]
+        public IActionResult EditCard(int id)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null)
+                return NotFound();
+
+            return View(product);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult EditCard(Product product)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Update(product);
+                _context.SaveChanges();
+                return RedirectToAction("Catalog");
+            }
+
+            return View(product);
+        }
         public IActionResult Index()
         {
             return View();

@@ -4,25 +4,42 @@
     ViewData["Title"] = "Каталог";
 }
 
-<h1 class="text-center my-4">Каталог</h1>
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Каталог</h1>
 
-<div class="container">
+
+    <form asp-controller="Home" asp-action="Catalog" method="get">
+        <input type="text" name="searchString" class="form-control w-50 me-2" placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
+        <button type="submit">Поиск</button>
+    </form>
+
+ 
     <div class="row">
-        @foreach (var item in Model)
+        @if (!Model.Any())
         {
-            <div class="col-md-4 mb-4">
-                <div class="card shadow-sm h-100">
-                    <div class="card-body text-center">
-                        <h5 class="card-title">@item.Name</h5>
-                        <p class="card-text text-muted">
-                            Цена: @item.Price.ToString("C")
-                        </p>
+            <p>Товары не найдены.</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p>Цена: @item.Price.ToString()</p>
+                            <p><small>Цвет: @item.Color</small></p>
+                            <p><small>Размеры: @item.Sizes</small></p>
+                            <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id">Редактировать</a>
+
+                        </div>
                     </div>
                 </div>
-            </div>
+            }
         }
     </div>
 </div>
+
 
 <style>
     .card {

@@ -1,0 +1,41 @@
+﻿@model ClothesWeb.Models.Product
+
+@{
+    ViewData["Title"] = "Редактирование товара";
+}
+
+<div class="container mt-4">
+    <h2 class="text-center mb-4">Редактирование карточки товара</h2>
+
+    <form asp-action="EditCard" method="post">
+        <input type="hidden" asp-for="Id" />
+
+        <div class="mb-3">
+            <label asp-for="Name">Название</label>
+            <input asp-for="Name"  />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price">Цена</label>
+            <input asp-for="Price"/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Color">Цвет</label>
+            <input asp-for="Color"/>
+        </div>
+
+        <div>
+            <label asp-for="Sizes">Размеры</label>
+            <input asp-for="Sizes"/>
+        </div>
+
+        <div>
+            <label asp-for="SupplierId">ID поставщика</label>
+            <input asp-for="SupplierId"/>
+        </div>
+
+        <button type="submit">Сохранить изменения</button>
+        <a asp-action="Catalog"> назад</a>
+    </form>
+</div>
