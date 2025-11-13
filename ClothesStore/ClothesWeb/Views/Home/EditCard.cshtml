@@ -4,11 +4,12 @@
     ViewData["Title"] = "Редактирование товара";
 }
 
-<div class="container mt-4">
-    <h2 class="text-center mb-4">Редактирование карточки товара</h2>
+<div>
+    <h2 class="text-center">Редактирование карточки товара</h2>
 
     <form asp-action="EditCard" method="post">
         <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
 
         <div class="mb-3">
             <label asp-for="Name">Название</label>
@@ -35,7 +36,17 @@
             <input asp-for="SupplierId"/>
         </div>
 
-        <button type="submit">Сохранить изменения</button>
-        <a asp-action="Catalog"> назад</a>
+        <button type="submit"> Сохранить изменения</button>
+        
+       
+        
+        @if (!string.IsNullOrEmpty(ViewBag.SearchString))
+        {
+            <a asp-action="Catalog" asp-route-searchString="@ViewBag.SearchString"> Назад</a>
+        }
+        else
+        {
+            <a asp-action="Catalog">Назад</a>
+        }
     </form>
 </div>

@@ -30,7 +30,8 @@
                             <p>Цена: @item.Price.ToString()</p>
                             <p><small>Цвет: @item.Color</small></p>
                             <p><small>Размеры: @item.Sizes</small></p>
-                            <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id">Редактировать</a>
+                            <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id" 
+                            asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
 
                         </div>
                     </div>

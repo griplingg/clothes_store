@@ -29,26 +29,41 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult EditCard(int id)
+        public IActionResult EditCard(int id, string searchString)
         {
             var product = _context.Products.FirstOrDefault(p => p.Id == id);
             if (product == null)
                 return NotFound();
 
+            ViewBag.SearchString = searchString;
             return View(product);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditCard(Product product)
+        public IActionResult EditCard(Product product, string searchString)
         {
             if (ModelState.IsValid)
             {
-                _context.Update(product);
+                var productToUpdate = _context.Products.FirstOrDefault(p => p.Id == product.Id);
+                if (productToUpdate == null)
+                    return NotFound();
+
+                productToUpdate.Name = product.Name;
+                productToUpdate.Price = product.Price;
+                productToUpdate.Color = product.Color;
+                productToUpdate.Sizes = product.Sizes;
+                productToUpdate.SupplierId = product.SupplierId;
+
                 _context.SaveChanges();
+             
+                if (!string.IsNullOrEmpty(searchString))
+                    return RedirectToAction("Catalog", new { searchString });
+
                 return RedirectToAction("Catalog");
             }
 
+            ViewBag.SearchString = searchString;
             return View(product);
         }
         public IActionResult Index()
