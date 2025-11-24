@@ -1,5 +1,10 @@
 ﻿
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
+
 namespace ClothesWeb.Models
 {
     public class Product
@@ -8,7 +13,18 @@ namespace ClothesWeb.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Color { get; set; }
-        public string Sizes { get; set; }
+       
+        public string? Sizes { get; set; }
+
+        public String ArticleNumber { get; set; }
+
         public int SupplierId { get; set; }
+
+
+        public ICollection<ProductSizes> ProductSizes { get; set; } = new List<ProductSizes>();
+
+        [BindNever]
+        [NotMapped]
+        public Supplier? Supplier { get; set; }
     }
 }

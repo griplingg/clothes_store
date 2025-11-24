@@ -7,10 +7,11 @@
 <div>
     <h2 class="text-center">Редактирование карточки товара</h2>
 
-    <form asp-action="EditCard" method="post">
+    <form asp-controller="Home" asp-action="EditCard" method="post">
+        @Html.AntiForgeryToken()
         <input type="hidden" asp-for="Id" />
         <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
-
+        <div asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name">Название</label>
             <input asp-for="Name"  />
@@ -26,10 +27,22 @@
             <input asp-for="Color"/>
         </div>
 
-        <div>
-            <label asp-for="Sizes">Размеры</label>
-            <input asp-for="Sizes"/>
-        </div>
+        <p>
+            <small>
+                Размеры:
+                @if (Model.ProductSizes != null && Model.ProductSizes.Any())
+                {
+
+                    @(string.Join(", ", Model.ProductSizes.Select(ps =>
+                        $"{ps.Size.Name} ({ps.Quantity})"
+                        )))
+                }
+                else
+                {
+                    <span>нет в наличии</span>
+                }
+            </small>
+        </p>
 
         <div>
             <label asp-for="SupplierId">ID поставщика</label>

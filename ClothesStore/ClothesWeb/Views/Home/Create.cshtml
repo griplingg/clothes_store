@@ -1,0 +1,68 @@
+﻿@model ClothesWeb.Models.Product
+
+@{
+    ViewData["Title"] = "Добавить товар";
+}
+
+<h2>Добавление нового товара</h2>
+
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control"/>
+        <span asp-validation-for="Name"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" step="0.01" />
+        <span asp-validation-for="Price"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Color"></label>
+        <input asp-for="Color" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ArticleNumber">артикул</label>
+        <input asp-for="ArticleNumber" class="form-control"/>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="SupplierId">Поставщик</label>
+        <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Supplier">
+            <option value="">-- Выберите поставщика --</option>
+        </select>
+
+        <span asp-validation-for="SupplierId"></span>
+    </div>
+
+    <h4>Размеры</h4>
+
+    <table class="table">
+        <tr>
+            <th>Размер</th>
+            <th>Количество</th>
+        </tr>
+
+        @for (int i = 0; i < ((List<ClothesWeb.Models.Size>)ViewBag.Sizes).Count; i++)
+        {
+            var size = ((List<ClothesWeb.Models.Size>)ViewBag.Sizes)[i];
+
+                <tr>
+                    <td>
+                    @size.Name
+                        <input type="hidden" name="sizeIds" value="@size.Id" />
+                    </td>
+                    <td>
+                        <input type="number" name="quantities" class="form-control" value="0" min="0" />
+                    </td>
+                </tr>
+        }
+    </table>
+
+    <button type="submit" class="btn btn-primary">Добавить товар</button>
+</form>

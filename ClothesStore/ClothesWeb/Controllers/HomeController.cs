@@ -1,6 +1,8 @@
 using System.Diagnostics;
 using ClothesWeb.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 
 namespace ClothesWeb.Controllers
 {
@@ -17,8 +19,10 @@ namespace ClothesWeb.Controllers
 
         public IActionResult Catalog(string searchString)
         {
-            var products = from p in _context.Products
-                           select p;
+            var products = _context.Products
+        .Include(p => p.ProductSizes)
+        .ThenInclude(ps => ps.Size)
+        .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -31,7 +35,9 @@ namespace ClothesWeb.Controllers
         [HttpGet]
         public IActionResult EditCard(int id, string searchString)
         {
-            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            var product = _context.Products.Include(p => p.ProductSizes)
+        .ThenInclude(ps => ps.Size)
+        .AsQueryable().FirstOrDefault(p => p.Id == id);
             if (product == null)
                 return NotFound();
 
@@ -41,30 +47,56 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult EditCard(Product product, string searchString)
+        
+        public IActionResult EditCard(Product product, string? searchString)
         {
             if (ModelState.IsValid)
             {
-                var productToUpdate = _context.Products.FirstOrDefault(p => p.Id == product.Id);
-                if (productToUpdate == null)
-                    return NotFound();
+                var productWithSizes = _context.Products
+            .Include(p => p.ProductSizes)
+            .ThenInclude(ps => ps.Size)
+            .FirstOrDefault(p => p.Id == product.Id);
 
-                productToUpdate.Name = product.Name;
-                productToUpdate.Price = product.Price;
-                productToUpdate.Color = product.Color;
-                productToUpdate.Sizes = product.Sizes;
-                productToUpdate.SupplierId = product.SupplierId;
 
-                _context.SaveChanges();
-             
-                if (!string.IsNullOrEmpty(searchString))
-                    return RedirectToAction("Catalog", new { searchString });
+                return View(productWithSizes ?? product);
+            }
+            var productToUpdate = _context.Products
+        .FirstOrDefault(p => p.Id == product.Id);
 
-                return RedirectToAction("Catalog");
+            if (productToUpdate == null)
+            {
+                return NotFound();
             }
 
-            ViewBag.SearchString = searchString;
-            return View(product);
+
+            productToUpdate.Name = product.Name;
+            productToUpdate.Price = product.Price;
+            productToUpdate.Color = product.Color; 
+            productToUpdate.SupplierId = product.SupplierId;
+
+
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError(string.Empty, "ќшибка сохранени€ изменений: " + ex.Message);
+
+
+                var productWithSizes = _context.Products
+                    .Include(p => p.ProductSizes)
+                    .ThenInclude(ps => ps.Size)
+                    .FirstOrDefault(p => p.Id == product.Id);
+
+                return View(productWithSizes ?? product);
+            }
+
+            return RedirectToAction("Catalog", new { searchString = searchString });
+
+
         }
         public IActionResult Index()
         {
@@ -80,6 +112,97 @@ namespace ClothesWeb.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.OrganizationName
+             }).ToList();
+
+            ViewBag.Sizes = _context.Sizes.ToList();
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Create(Product product, int[] sizeIds, int[] quantities)
+        { 
+            if (!ModelState.IsValid)
+            {
+                foreach (var err in ModelState)
+                {
+                    foreach (var e in err.Value.Errors)
+                    { Console.WriteLine($"ошибка: {err.Key} Ч {e.ErrorMessage}"); }
+                }
+
+                ViewBag.Sizes = _context.Sizes.ToList();
+                return View(product);
+            }
+
+
+
+            _context.Products.Add(product);
+            _context.SaveChanges();
+            if (sizeIds != null && quantities != null && sizeIds.Length == quantities.Length)
+            {
+                for (int i = 0; i < sizeIds.Length; i++)
+                {
+                    if (quantities[i] > 0)
+                    {
+                        var ps = new ProductSizes
+                        {
+                            ProductId = product.Id,
+                            SizeId = sizeIds[i],
+                            Quantity = quantities[i]
+                        };
+                        _context.ProductSizes.Add(ps);
+                    }
+                }
+                _context.SaveChanges();
+            }
+            return RedirectToAction("Catalog");
+        }
+
+        public IActionResult Supply(int id)
+        {
+            var product = _context.Products.FirstOrDefault(p => p.Id == id);
+            if (product == null) return NotFound();
+
+            ViewBag.Sizes = _context.Sizes.ToList();
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Supply(int productId, int sizeId, int quantity)
+        {
+
+            var existing = _context.ProductSizes
+                .FirstOrDefault(ps => ps.ProductId == productId && ps.SizeId == sizeId);
+
+            if (existing != null)
+            {
+
+                existing.Quantity += quantity;
+            }
+            else
+            {
+                var newRecord = new ProductSizes
+                {
+                    ProductId = productId,
+                    SizeId = sizeId,
+                    Quantity = quantity
+                };
+                _context.ProductSizes.Add(newRecord);
+            }
+
+            _context.SaveChanges();
+            return RedirectToAction("EditCard", new { id = productId });
         }
     }
 }

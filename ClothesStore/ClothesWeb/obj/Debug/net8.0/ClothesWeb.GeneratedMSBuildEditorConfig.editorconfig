@@ -24,6 +24,10 @@ build_property.EnableCodeStyleSeverity =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDYXRhbG9nLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxDcmVhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/EditCard.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxFZGl0Q2FyZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -34,6 +38,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/Privacy.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/Supply.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxTdXBwbHkuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Shared/Error.cshtml]

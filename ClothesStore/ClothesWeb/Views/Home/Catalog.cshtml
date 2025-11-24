@@ -4,6 +4,10 @@
     ViewData["Title"] = "Каталог";
 }
 
+<form asp-controller="Home" asp-action="Create" method="get">
+    <button type="submit">Добавить новый товар</button>
+</form>
+
 <div class="container mt-4">
     <h1 class="text-center mb-4">Каталог</h1>
 
@@ -13,7 +17,7 @@
         <button type="submit">Поиск</button>
     </form>
 
- 
+
     <div class="row">
         @if (!Model.Any())
         {
@@ -27,19 +31,40 @@
                     <div class="card shadow-sm h-100">
                         <div class="card-body text-center">
                             <h5 class="card-title">@item.Name</h5>
-                            <p>Цена: @item.Price.ToString()</p>
+                            <p>Цена: @item.Price.ToString("C")</p>
                             <p><small>Цвет: @item.Color</small></p>
-                            <p><small>Размеры: @item.Sizes</small></p>
-                            <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id" 
-                            asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
 
+                            <p>
+                                <small>
+                                    Размеры:
+                                    @if (item.ProductSizes != null && item.ProductSizes.Any())
+                                    {
+                                        // 1. Извлекаем имя размера и количество.
+                                        // 2. Объединяем их в строку "S (10), M (5), L (0)".
+                                        // 3. Используем string.Join для создания общей строки.
+                                        @(string.Join(", ", item.ProductSizes.Select(ps =>
+                                            $"{ps.Size.Name} ({ps.Quantity})"
+                                            )))
+                                    }
+                                    else
+                                    {
+                                        // Если размеров нет (коллекция пуста)
+                                        <span>нет в наличии</span>
+                                    }
+                                </small>
+                            </p>
+                            <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id"
+                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
+
+                            <a asp-controller="Home" asp-action="Supply" asp-route-id="@item.Id" class="btn btn-warning">
+                                Поставка
+                            </a>
                         </div>
                     </div>
                 </div>
             }
         }
     </div>
-</div>
 
 
 <style>
