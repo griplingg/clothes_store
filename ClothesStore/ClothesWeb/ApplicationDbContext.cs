@@ -1,14 +1,18 @@
 ﻿using ClothesWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using ClothesWeb.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 namespace ClothesWeb;
-public class ApplicationDbContext : DbContext
+public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
         : base(options)
     {
     }
+
+
 
     public DbSet<Product> Products { get; set; }
     public DbSet<Size> Sizes { get; set; }
@@ -17,7 +21,7 @@ public class ApplicationDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        
+        base.OnModelCreating(modelBuilder);
         modelBuilder.Entity<ProductSizes>()
             .HasKey(ps => new { ps.ProductId, ps.SizeId });
 

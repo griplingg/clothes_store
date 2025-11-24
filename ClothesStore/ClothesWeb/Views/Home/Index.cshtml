@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -24,6 +27,8 @@
 <body>
     <div class="container">
         <h1>Меню </h1>
+        <ul class="menu-list">
+            
 
         <ul class="menu-list">
             <li class="menu-item">

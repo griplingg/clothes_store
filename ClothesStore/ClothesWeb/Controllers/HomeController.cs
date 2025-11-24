@@ -1,5 +1,6 @@
 using System.Diagnostics;
 using ClothesWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -128,6 +129,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Admin")]
         public IActionResult EditCard(int id, string searchString)
         {
             var product = _context.Products.Include(p => p.ProductSizes)
