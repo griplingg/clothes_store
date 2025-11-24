@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ClothesWeb.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Каталог поставщиков";
+}
+
+<form asp-controller="Home" asp-action="AddSupplier" method="get">
+    <button type="submit">Добавить нового поставщика</button>
+</form>
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Каталог</h1>
+
+
+    <form asp-controller="Home" asp-action="SupplierCatalog" method="get">
+        <input type="text" name="searchString" class="form-control w-50 me-2" placeholder="Введите поставщика" value="@Context.Request.Query["searchString"]" />
+        <button type="submit">Поиск</button>
+    </form>
+
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <p>Поставщики не найдены</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@item.OrganizationName</h5>
+                            <p>email: @item.ContactMail</p>
+                            <p><small>Контактное лицо: @item.ContactName</small></p>
+                            <p><small>Контактный телефон: @item.ContactPhone</small></p>
+
+                            
+                            <a asp-controller="Home" asp-action="EditSupplierCard" asp-route-id="@item.Id"
+                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+
+<style>
+    .card {
+        border-radius: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+    h1 {
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+</style>

@@ -33,22 +33,18 @@
                             <h5 class="card-title">@item.Name</h5>
                             <p>Цена: @item.Price.ToString("C")</p>
                             <p><small>Цвет: @item.Color</small></p>
-
+                            <p><small>Артикул: @item.ArticleNumber.ToString()</small></p>
                             <p>
                                 <small>
                                     Размеры:
                                     @if (item.ProductSizes != null && item.ProductSizes.Any())
                                     {
-                                        // 1. Извлекаем имя размера и количество.
-                                        // 2. Объединяем их в строку "S (10), M (5), L (0)".
-                                        // 3. Используем string.Join для создания общей строки.
                                         @(string.Join(", ", item.ProductSizes.Select(ps =>
                                             $"{ps.Size.Name} ({ps.Quantity})"
                                             )))
                                     }
                                     else
                                     {
-                                        // Если размеров нет (коллекция пуста)
                                         <span>нет в наличии</span>
                                     }
                                 </small>

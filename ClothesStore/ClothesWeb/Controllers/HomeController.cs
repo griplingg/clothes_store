@@ -16,7 +16,102 @@ namespace ClothesWeb.Controllers
             _logger = logger;
             _context = context;
         }
+        [HttpGet]
+        public IActionResult SupplierCatalog(string searchString)
+        {
+            var suppliers = _context.Supplier.AsQueryable();
 
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                suppliers = suppliers.Where(p => p.OrganizationName.Contains(searchString));
+            }
+
+            return View(suppliers.ToList());
+        }
+
+        [HttpGet]
+        public IActionResult EditSupplierCard(int id, string searchString)
+        {
+            var supplier = _context.Supplier.AsQueryable().FirstOrDefault(p => p.Id == id);
+            if (supplier == null)
+                return NotFound();
+
+            ViewBag.SearchString = searchString;
+            return View(supplier);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult EditSupplierCard(Supplier supplier, string? searchString)
+        {
+            
+            var productToUpdate = _context.Supplier
+        .FirstOrDefault(p => p.Id == supplier.Id);
+
+            if (productToUpdate == null)
+            {
+                return NotFound();
+            }
+
+
+            productToUpdate.OrganizationName = supplier.OrganizationName;
+            productToUpdate.ContactMail = supplier.ContactMail;
+            productToUpdate.ContactName = supplier.ContactName;
+            productToUpdate.ContactPhone = supplier.ContactPhone;
+
+
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+
+                ModelState.AddModelError(string.Empty, "ќшибка сохранени€ изменений: " + ex.Message);
+
+            }
+
+            return RedirectToAction("SupplierCatalog", new { searchString = searchString });
+
+
+        }
+
+        [HttpGet]
+        public IActionResult AddSupplier()
+        {
+            ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
+            {
+                
+            }).ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddSupplier(Supplier supplier)
+        {
+            if (!ModelState.IsValid)
+            {
+                foreach (var err in ModelState)
+                {
+                    foreach (var e in err.Value.Errors)
+                    { Console.WriteLine($"ошибка: {err.Key} Ч {e.ErrorMessage}"); }
+                }
+
+                return View(supplier);
+            }
+
+
+
+            _context.Supplier.Add(supplier);
+            _context.SaveChanges();
+            return RedirectToAction("SupplierCatalog");
+        }
+
+        [HttpGet]
         public IActionResult Catalog(string searchString)
         {
             var products = _context.Products
