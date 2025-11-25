@@ -19,6 +19,10 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Supplier> Supplier { get; set; }
     public DbSet<ProductSizes> ProductSizes { get; set; }
 
+    public DbSet<Sell> Sells { get; set; }
+    public DbSet<SellItem> SellItems { get; set; }
+    public DbSet<SellComposition> SellCompositions { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -42,6 +46,21 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
         .WithMany(s => s.Products)
         .HasForeignKey(p => p.SupplierId)
         .OnDelete(DeleteBehavior.Restrict);
+
+
+        modelBuilder.Entity<SellComposition>()
+            .HasKey(sc => new { sc.SellId, sc.SellItemId });
+
+        modelBuilder.Entity<SellComposition>()
+            .HasOne(sc => sc.Sell)
+            .WithMany(s => s.SaleComposition)
+            .HasForeignKey(sc => sc.SellId);
+
+
+        modelBuilder.Entity<SellComposition>()
+            .HasOne(sc => sc.SellItem)
+            .WithMany()
+            .HasForeignKey(sc => sc.SellItemId);
     }
 
 }
