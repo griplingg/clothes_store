@@ -1,6 +1,8 @@
 using System.Diagnostics;
+using System.Security.Claims;
 using ClothesWeb.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -115,7 +117,7 @@ namespace ClothesWeb.Controllers
         [HttpGet]
         public IActionResult Catalog(string searchString)
         {
-            var products = _context.Products
+            var products = _context.Products.Include(p => p.Category)
         .Include(p => p.ProductSizes)
         .ThenInclude(ps => ps.Size)
         .AsQueryable();
@@ -124,21 +126,33 @@ namespace ClothesWeb.Controllers
             {
                 products = products.Where(p => p.Name.Contains(searchString));
             }
+        
+            var model = products
+        .ToList()
+        .GroupBy(p => p.Category)
+        .Select(g => new CategoryProductsViewModel
+        {
+            Category = g.Key,
+            Products = g.ToList()
+        })
+        .ToList();
 
-            return View(products.ToList());
+            return View(model);
         }
 
         [HttpGet]
         [Authorize(Roles = "Admin")]
         public IActionResult EditCard(int id, string searchString)
         {
-            var product = _context.Products.Include(p => p.ProductSizes)
+            var product = _context.Products.Include(p => p.Category).Include(p => p.Supplier).Include(p => p.ProductSizes)
         .ThenInclude(ps => ps.Size)
         .AsQueryable().FirstOrDefault(p => p.Id == id);
             if (product == null)
                 return NotFound();
 
             ViewBag.SearchString = searchString;
+            ViewBag.Categories = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
+            ViewBag.Suppliers = new SelectList(_context.Supplier, "Id", "OrganizationName", product.SupplierId);
             return View(product);
         }
 
@@ -147,18 +161,17 @@ namespace ClothesWeb.Controllers
         
         public IActionResult EditCard(Product product, string? searchString)
         {
-            if (ModelState.IsValid)
+            ViewBag.Categories = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
+            ViewBag.Suppliers = new SelectList(_context.Supplier, "Id", "OrganizationName", product.SupplierId);
+            ViewBag.SearchString = searchString;
+
+            if (!ModelState.IsValid)
             {
-                var productWithSizes = _context.Products
-            .Include(p => p.ProductSizes)
-            .ThenInclude(ps => ps.Size)
-            .FirstOrDefault(p => p.Id == product.Id);
-
-
-                return View(productWithSizes ?? product);
+                return View(product);
             }
-            var productToUpdate = _context.Products
-        .FirstOrDefault(p => p.Id == product.Id);
+
+            var productToUpdate = _context.Products.FirstOrDefault(p => p.Id == product.Id);
+           
 
             if (productToUpdate == null)
             {
@@ -170,6 +183,7 @@ namespace ClothesWeb.Controllers
             productToUpdate.Price = product.Price;
             productToUpdate.Color = product.Color; 
             productToUpdate.SupplierId = product.SupplierId;
+            productToUpdate.CategoryId = product.CategoryId;
 
 
 
@@ -179,24 +193,20 @@ namespace ClothesWeb.Controllers
             }
             catch (Exception ex)
             {
-
                 ModelState.AddModelError(string.Empty, "Ошибка сохранения изменений: " + ex.Message);
-
-
-                var productWithSizes = _context.Products
-                    .Include(p => p.ProductSizes)
-                    .ThenInclude(ps => ps.Size)
-                    .FirstOrDefault(p => p.Id == product.Id);
-
-                return View(productWithSizes ?? product);
+                return View(productToUpdate); 
             }
 
-            return RedirectToAction("Catalog", new { searchString = searchString });
+            return RedirectToAction("Catalog", new { searchString = searchString }); ;
 
 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            ViewData["UserId"] = userId;
+
             return View();
         }
 

@@ -10,7 +10,7 @@ namespace ClothesWeb.Models
         public string PaymentMethod {  get; set; }
         public string EmployeeId { get; set; }
 
-        public ICollection<SellComposition> SaleComposition { get; set; } = new List<SellComposition>();
+        public ICollection<SellItem> SellItem { get; set; } = new List<SellItem>();
 
         
     }

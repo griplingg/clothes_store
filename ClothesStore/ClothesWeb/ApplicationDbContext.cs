@@ -21,7 +21,8 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<Sell> Sells { get; set; }
     public DbSet<SellItem> SellItems { get; set; }
-    public DbSet<SellComposition> SellCompositions { get; set; }
+    public DbSet<Category> Category { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -47,20 +48,32 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
         .HasForeignKey(p => p.SupplierId)
         .OnDelete(DeleteBehavior.Restrict);
 
-
-        modelBuilder.Entity<SellComposition>()
-            .HasKey(sc => new { sc.SellId, sc.SellItemId });
-
-        modelBuilder.Entity<SellComposition>()
-            .HasOne(sc => sc.Sell)
-            .WithMany(s => s.SaleComposition)
-            .HasForeignKey(sc => sc.SellId);
+        modelBuilder.Entity<Product>()
+            .HasOne(p => p.Category)
+            .WithMany(c => c.Products)
+            .HasForeignKey(p => p.CategoryId)
+            .OnDelete(DeleteBehavior.Restrict);
 
 
-        modelBuilder.Entity<SellComposition>()
-            .HasOne(sc => sc.SellItem)
-            .WithMany()
-            .HasForeignKey(sc => sc.SellItemId);
+
+        // --- 2. Настройка связей для SellItem ---
+        // Sell (1) <-> SellItem (М)
+        modelBuilder.Entity<SellItem>()
+            .HasOne(si => si.Sell)
+            .WithMany(s => s.SellItem) // Вы, вероятно, захотите переименовать SaleComposition в SellsItems в модели Sell
+            .HasForeignKey(si => si.SellId);
+
+        // SellItem (М) <-> Product (1)
+        modelBuilder.Entity<SellItem>()
+            .HasOne(si => si.Product)
+            .WithMany() // У Product нет коллекции SellItem, поэтому используем WithMany()
+            .HasForeignKey(si => si.ProductId);
+
+        // SellItem (М) <-> Size (1)
+        modelBuilder.Entity<SellItem>()
+            .HasOne(si => si.Size)
+            .WithMany() // У Size нет коллекции SellItem, поэтому используем WithMany()
+            .HasForeignKey(si => si.SizeId);
     }
 
 }

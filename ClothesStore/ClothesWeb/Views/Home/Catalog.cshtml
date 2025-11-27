@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ClothesWeb.Models.Product>
+﻿@model IEnumerable<ClothesWeb.Models.CategoryProductsViewModel>
+
 
 @{
     ViewData["Title"] = "Каталог";
@@ -25,30 +26,40 @@
         }
         else
         {
-            @foreach (var item in Model)
-            {
-                <div class="col-md-4 mb-4">
-                    <div class="card shadow-sm h-100">
-                        <div class="card-body text-center">
-                            <h5 class="card-title">@item.Name</h5>
-                            <p>Цена: @item.Price.ToString("C")</p>
-                            <p><small>Цвет: @item.Color</small></p>
-                            <p><small>Артикул: @item.ArticleNumber.ToString()</small></p>
-                            <p>
-                                <small>
-                                    Размеры:
-                                    @if (item.ProductSizes != null && item.ProductSizes.Any())
-                                    {
-                                        @(string.Join(", ", item.ProductSizes.Select(ps =>
+            @foreach (var categoryGroup in Model)
+{
+    <h2 class="mt-5">@categoryGroup.Category.Name</h2>
+    <hr />
+
+    <div class="row">
+        @foreach (var item in categoryGroup.Products)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card shadow-sm h-100">
+                    <div class="card-body text-center">
+
+                        <h5 class="card-title">@item.Name</h5>
+
+                        <p>Цена: @item.Price.ToString("C")</p>
+                        <p><small>Цвет: @item.Color</small></p>
+                        <p><small>Артикул: @item.ArticleNumber</small></p>
+
+                        <p>
+                            <small>
+                                Размеры:
+                                @if (item.ProductSizes != null && item.ProductSizes.Any())
+                                {
+                                    @(string.Join(", ",
+                                        item.ProductSizes.Select(ps =>
                                             $"{ps.Size.Name} ({ps.Quantity})"
-                                            )))
-                                    }
-                                    else
-                                    {
-                                        <span>нет в наличии</span>
-                                    }
-                                </small>
-                            </p>
+                                        )))
+                                }
+                                else
+                                {
+                                    <span>нет в наличии</span>
+                                }
+                            </small>
+                        </p>
                             <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id"
                                asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
 
@@ -59,8 +70,10 @@
                     </div>
                 </div>
             }
-        }
-    </div>
+            </div>
+        
+}
+}
 
 
 <style>

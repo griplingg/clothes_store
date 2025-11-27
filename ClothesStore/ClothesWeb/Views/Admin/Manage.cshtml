@@ -1,0 +1,81 @@
+﻿@{
+    ViewBag.Title = "Управление ролями пользователей";
+    var usersRoles = ViewBag.UsersRoles;
+    var roles = ViewBag.AllRoles; 
+}
+
+<h2>Управление группами ролей</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя пользователя</th>
+            <th>Роли</th>
+            <th>Добавить в роль</th>
+            <th>Удалить из роли</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userRole in usersRoles)
+        {
+            <tr>
+                <td>@userRole.User.UserName</td>
+                <td>
+                    @foreach (var roleName in userRole.RoleNames)
+                    {
+                        <span>@roleName </span>
+                    }
+                </td>
+                <td>
+                    <form asp-action="AddUserToRole" method="post">
+                        <input type="hidden" name="userId" value="@userRole.User.Id" />
+                        <select name="roleName">
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                        <button type="submit" >Добавить</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="RemoveUserFromRole" method="post">
+                        <input type="hidden" name="userId" value="@userRole.User.Id" />
+                        <select name="roleName" c">
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                        <button type="submit" >Удалить</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<hr />
+
+<h3>Создать новую группу</h3>
+<form asp-action="CreateRole" method="post">
+    <div class="form-group">
+        <input type="text" name="roleName" placeholder="Имя"  />
+    </div>
+    <button type="submit" >Создать роль</button>
+</form>
+
+<hr />
+
+<h3>Удалить группу</h3>
+<form asp-action="DeleteRole" method="post">
+    <div class="form-group">
+        <select name="roleId" >
+            @foreach (var role in roles)
+            {
+                <option value="@role.Id">@role.Name</option>
+            }
+        </select>
+    </div>
+    <button type="submit" >Удалить роль</button>
+</form>

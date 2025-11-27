@@ -16,9 +16,11 @@ namespace ClothesWeb.Models
        
         public string? Sizes { get; set; }
 
-        public String ArticleNumber { get; set; }
+        public string ArticleNumber { get; set; }
 
         public int SupplierId { get; set; }
+        public int? CategoryId { get; set; }
+        
 
 
         public ICollection<ProductSizes> ProductSizes { get; set; } = new List<ProductSizes>();
@@ -26,5 +28,6 @@ namespace ClothesWeb.Models
         [BindNever]
         [NotMapped]
         public Supplier? Supplier { get; set; }
+        public Category? Category { get; set; }
     }
 }

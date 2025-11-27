@@ -1,0 +1,53 @@
+﻿@{
+    ViewData["Title"] = "Статистика продаж";
+}
+
+<h1 class="mb-4">Статистика продаж</h1>
+
+<form asp-action="Statistics" method="post">
+    <div class="mb-3">
+        <label for="startDate">Дата начала:</label>
+        <input type="date" name="startDate" class="form-control" value="@ViewBag.StartDate" required />
+    </div>
+    <div class="mb-3">
+        <label for="endDate">Дата конца:</label>
+        <input type="date" name="endDate" class="form-control" value="@ViewBag.EndDate" required />
+    </div>
+    <button type="submit" class="btn btn-primary">Показать статистику</button>
+</form>
+
+@if (ViewBag.TotalRevenue != null)
+{
+    <hr />
+    <h3>Оборот за период: <strong>@ViewBag.TotalRevenue.ToString("C")</strong></h3>
+
+    <table class="table table-bordered mt-3">
+        <thead>
+            <tr>
+                <th>Дата продажи</th>
+                <th>Товар</th>
+                <th>Количество</th>
+                <th>Цена</th>
+                <th>Сумма</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sell in ViewBag.Sales as List<ClothesWeb.Models.Sell>)
+            {
+                foreach (var item in sell.SellItem)
+                {
+                    <tr>
+                        <td>@sell.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("C")</td>
+                        @{
+                            var total = item.Price * item.Quantity;
+                        }
+                        <td>@total.ToString("C")</td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+}

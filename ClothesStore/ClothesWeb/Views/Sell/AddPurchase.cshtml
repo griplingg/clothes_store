@@ -1,0 +1,175 @@
+﻿@model ClothesWeb.Models.AddPurchaseViewModel
+
+@{
+    ViewData["Title"] = "Добавление продажи";
+}
+
+<h2>🛍️ @ViewData["Title"]</h2>
+
+<form asp-action="AddPurchase" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+
+    <h4>Общая информация</h4>
+    <div class="form-group">
+        <label asp-for="PaymentMethod"></label>
+        <input asp-for="PaymentMethod" class="form-control" />
+        <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+    </div>
+
+    <hr/>
+    <h4>Товары для продажи</h4>
+
+    <table class="table table-bordered table-sm" id="itemsTable">
+        <thead>
+            <tr>
+                <th style="width: 40%;">Товар</th>
+                <th style="width: 25%;">Размер</th>
+                <th style="width: 20%;">Количество</th>
+                <th style="width: 15%;">Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            </tbody>
+    </table>
+
+    <button type="button" id="addItemButton" class="btn btn-sm btn-info mb-3">➕ Добавить товар</button>
+    <br/>
+
+    <div class="form-group mt-3">
+        <input type="submit" value="Сохранить продажу" class="btn btn-success" />
+    </div>
+</form>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+        <script>
+            var itemIndex = 0;
+
+            var products = @Html.Raw(Json.Serialize(Model.AllProducts.Select(p => new { p.Id, p.Name })));
+
+            function getItemRowHtml(index) {
+                var productOptions = products.map(p => `<option value="${p.id}">${p.name}</option>`).join('');
+
+                return `
+                    <tr data-index="${index}">
+                        <td>
+                            <select 
+                                name="Items[${index}].ProductId" 
+                                class="form-control form-control-sm product-select" 
+                                data-index="${index}" 
+                                required>
+                                <option value="">Выберите товар</option>
+                                ${productOptions}
+                            </select>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Items[${index}].ProductId"></span>
+                        </td>
+
+                        <td>
+                            <select 
+                                name="Items[${index}].SizeId" 
+                                class="form-control form-control-sm size-select" 
+                                data-index="${index}" 
+                                disabled 
+                                required>
+                                <option value="">Выберите размер</option>
+                            </select>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Items[${index}].SizeId"></span>
+                        </td>
+
+                        <td>
+                            <input 
+                                type="number" 
+                                name="Items[${index}].Quantity" 
+                                class="form-control form-control-sm quantity-input" 
+                                min="1" 
+                                value="1"
+                                data-index="${index}" 
+                                required 
+                                disabled/>
+                            <small class="stock-info text-muted"></small>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Items[${index}].Quantity"></span>
+                        </td>
+
+                        <td>
+                            <button type="button" class="btn btn-danger btn-sm removeItemButton" data-index="${index}">Удалить</button>
+                        </td>
+                    </tr>
+                `;
+            }
+
+            $('#addItemButton').on('click', function() {
+                $('#itemsTable tbody').append(getItemRowHtml(itemIndex));
+                itemIndex++;
+            });
+
+            $('#itemsTable').on('change', '.product-select', function() {
+                var selectedProductId = $(this).val();
+                var index = $(this).data('index');
+                var row = $(this).closest('tr');
+                var sizeSelect = row.find('.size-select');
+                var quantityInput = row.find('.quantity-input');
+
+                sizeSelect.html('<option value="">Загрузка размеров...</option>').prop('disabled', true);
+                quantityInput.val(1).prop('disabled', true).removeAttr('max');
+                row.find('.stock-info').text('');
+
+                if (selectedProductId) {
+                    $.getJSON('/Sell/GetSizesByProduct', { productId: selectedProductId }, function(data) {
+                        sizeSelect.html('<option value="">Выберите размер</option>');
+                        if (data && data.length > 0) {
+                            data.forEach(function(size) {
+                                sizeSelect.append(`<option value="${size.sizeId}" data-stock="${size.quantity}">${size.sizeName} (В наличии: ${size.quantity})</option>`);
+                            });
+                            sizeSelect.prop('disabled', false);
+                        } else {
+                            sizeSelect.html('<option value="">Нет доступных размеров</option>');
+                        }
+                    });
+                }
+            });
+
+            $('#itemsTable').on('change', '.size-select', function() {
+                var selectedOption = $(this).find('option:selected');
+                var stockQuantity = selectedOption.data('stock'); 
+                var row = $(this).closest('tr');
+                var quantityInput = row.find('.quantity-input');
+
+                row.find('.stock-info').text(`Макс: ${stockQuantity || 0}`);
+                quantityInput.attr('max', stockQuantity).prop('disabled', false);
+                quantityInput.val(1);
+
+                if (!stockQuantity || stockQuantity < 1) {
+                    quantityInput.prop('disabled', true).val(0);
+                    row.find('.stock-info').text('Нет в наличии');
+                }
+            });
+
+            $('#itemsTable').on('click', '.removeItemButton', function() {
+                $(this).closest('tr').remove();
+                reIndexRows();
+            });
+
+            function reIndexRows() {
+                $('#itemsTable tbody tr').each(function(i) {
+                    $(this).find('select, input').each(function() {
+                        var oldName = $(this).attr('name');
+                        if (oldName) {
+                            $(this).attr('name', oldName.replace(/Items\[\d+\]/, 'Items[' + i + ']'));
+                        }
+                        $(this).attr('data-index', i);
+                    });
+                    $(this).attr('data-index', i);
+                });
+                itemIndex = $('#itemsTable tbody tr').length;
+            }
+
+            $(document).ready(function() {
+                if (itemIndex === 0) {
+                    $('#addItemButton').click();
+                }
+            });
+
+        </script>
+}

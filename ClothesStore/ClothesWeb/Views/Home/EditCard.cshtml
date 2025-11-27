@@ -11,6 +11,7 @@
         @Html.AntiForgeryToken()
         <input type="hidden" asp-for="Id" />
         <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
+        <input type="hidden" asp-for="ArticleNumber" />
         <div asp-validation-summary="All"></div>
         <div class="mb-3">
             <label asp-for="Name">Название</label>
@@ -25,6 +26,20 @@
         <div class="mb-3">
             <label asp-for="Color">Цвет</label>
             <input asp-for="Color"/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label">Категория</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <option value="">-- Выберите категорию --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SupplierId" class="form-label">поставщик</label>
+            <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Suppliers">
+                <option value="">-- Выберите категорию --</option>
+            </select>
         </div>
 
         <p>
@@ -44,10 +59,6 @@
             </small>
         </p>
 
-        <div>
-            <label asp-for="SupplierId">ID поставщика</label>
-            <input asp-for="SupplierId"/>
-        </div>
 
         <button type="submit"> Сохранить изменения</button>
         
