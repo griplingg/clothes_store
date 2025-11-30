@@ -7,27 +7,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Главная страница - Управление товарами</title>
-    <style>
-   
-        h1 {
-            text-align: center;
-            margin-bottom: 30px;
-        }
-        .menu-list {
-            list-style: none;
-
-            padding: 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-        
-    </style>
+    <link rel="stylesheet" href="~/css/StyleIndex.css" />
+    
 </head>
 <body>
     <div class="container">
         <h1>Меню </h1>
-        <ul class="menu-list">
+
             <p>Ваш Id: @ViewData["UserId"]</p>
             
 
@@ -55,13 +41,14 @@
             <li class="menu-item">
                 <a href="/Inventory/WriteOff"> Списать товар</a>
             </li>
-
-            <li class="menu-item">
-                @if (User.IsInRole("Admin"))
-                {
+				@if (User.IsInRole("Admin"))
+            {<li class="menu-item">
+                
+                
                 <a asp-controller="Admin" asp-action="Manage"> Админ-панель</a>
-                }
-            </li>
+
+					</li>
+				}
 
         </ul>
 

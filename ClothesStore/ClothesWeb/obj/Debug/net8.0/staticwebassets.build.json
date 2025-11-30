@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "tk+QWTOG9PddZTiid3yVvKg9Gpo+ecXs4T3U7q4tV0s=",
+  "Hash": "TeKCiH4RN2/p06qPpzrfGHxh0lmdmAMezdWUztmg+No=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1338,6 +1338,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\StyleIndex.css",
+      "SourceId": "ClothesWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
+      "BasePath": "_content/ClothesWeb",
+      "RelativePath": "css/StyleIndex#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "se0p5ibikg",
+      "Integrity": "rFSUqEmMi3fleM8+1p49OWe81QvTQy2vlRdOu/KTnl0=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\StyleIndex.css"
     },
     {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\favicon.ico",
@@ -2823,6 +2844,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-pAGv4ietcJNk/EwsQZ5BN9+K4MuNYS2a9wl4Jw+q9D0="
+        }
+      ]
+    },
+    {
+      "Route": "css/StyleIndex.css",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\StyleIndex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rFSUqEmMi3fleM8+1p49OWe81QvTQy2vlRdOu/KTnl0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 30 Nov 2025 19:08:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-rFSUqEmMi3fleM8+1p49OWe81QvTQy2vlRdOu/KTnl0="
+        }
+      ]
+    },
+    {
+      "Route": "css/StyleIndex.se0p5ibikg.css",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\StyleIndex.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "954"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"rFSUqEmMi3fleM8+1p49OWe81QvTQy2vlRdOu/KTnl0=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 30 Nov 2025 19:08:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "se0p5ibikg"
+        },
+        {
+          "Name": "label",
+          "Value": "css/StyleIndex.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-rFSUqEmMi3fleM8+1p49OWe81QvTQy2vlRdOu/KTnl0="
         }
       ]
     },
