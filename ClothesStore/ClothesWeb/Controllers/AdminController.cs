@@ -20,7 +20,7 @@ namespace ClothesWeb.Controllers
             _roleManager = roleManager;
         }
 
-        // GET: Управление ролями
+
         [HttpGet]
         public async Task<IActionResult> Manage()
         {
@@ -28,11 +28,11 @@ namespace ClothesWeb.Controllers
             var users = _userManager.Users.ToList();
 
 
-            var usersRoles = new List<UserRolesViewModel>();
+            var usersRoles = new List<UserRolesView>();
             foreach (var user in users)
             {
                 var roleNames = await _userManager.GetRolesAsync(user);
-                usersRoles.Add(new UserRolesViewModel
+                usersRoles.Add(new UserRolesView
                 {
                     User = user,
                     RoleNames = roleNames
@@ -44,9 +44,36 @@ namespace ClothesWeb.Controllers
        
             ViewBag.UsersRoles = usersRoles;
             ViewBag.AllRoles = roles;
+            ViewBag.CreateUser = new CreateUserView();
 
             return View();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateUser(CreateUserView model)
+        {
+            if (!ModelState.IsValid)
+                return RedirectToAction("Manage");
+
+            var user = new IdentityUser
+            {
+                UserName = model.UserName,
+                Email = model.Email,
+                EmailConfirmed = true
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = string.Join(", ",
+                    result.Errors.Select(e => e.Description));
+            }
+
+            return RedirectToAction("Manage");
+        }
+
 
 
         [HttpPost]
@@ -90,15 +117,14 @@ namespace ClothesWeb.Controllers
             
         }
 
+
+
     
 
         
     }
 
 
-    public class UserRolesViewModel
-    {
-        public IdentityUser User { get; set; }
-        public IList<string> RoleNames { get; set; }
-    }
+
+    
 }
