@@ -58,7 +58,7 @@ namespace ClothesWeb.Controllers
 
             var user = new IdentityUser
             {
-                UserName = model.UserName,
+                UserName = model.Email,
                 Email = model.Email,
                 EmailConfirmed = true
             };

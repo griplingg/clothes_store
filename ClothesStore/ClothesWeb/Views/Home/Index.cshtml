@@ -49,11 +49,18 @@
             </li>
 
             <li class="menu-item">
-                <a href="/Statistics/ViewSaleReport">Смотреть статистику</a>
+                <a href="/Reports/Statistics">Смотреть статистику</a>
             </li>
 
             <li class="menu-item">
                 <a href="/Inventory/WriteOff"> Списать товар</a>
+            </li>
+
+            <li class="menu-item">
+                @if (User.IsInRole("Admin"))
+                {
+                <a asp-controller="Admin" asp-action="Manage"> Админ-панель</a>
+                }
             </li>
 
         </ul>
