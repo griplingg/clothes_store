@@ -12,7 +12,10 @@
         <input type="hidden" asp-for="Id" />
         <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
         <input type="hidden" asp-for="ArticleNumber" />
+        <input type="hidden" asp-for="IsDeleted" />
+
         <div asp-validation-summary="All"></div>
+
         <div class="mb-3">
             <label asp-for="Name">Название</label>
             <input asp-for="Name"  />

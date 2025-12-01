@@ -55,25 +55,22 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .OnDelete(DeleteBehavior.Restrict);
 
 
-
-        // --- 2. Настройка связей для SellItem ---
-        // Sell (1) <-> SellItem (М)
         modelBuilder.Entity<SellItem>()
             .HasOne(si => si.Sell)
-            .WithMany(s => s.SellItem) // Вы, вероятно, захотите переименовать SaleComposition в SellsItems в модели Sell
+            .WithMany(s => s.SellItem) 
             .HasForeignKey(si => si.SellId);
 
-        // SellItem (М) <-> Product (1)
         modelBuilder.Entity<SellItem>()
             .HasOne(si => si.Product)
-            .WithMany() // У Product нет коллекции SellItem, поэтому используем WithMany()
+            .WithMany() 
             .HasForeignKey(si => si.ProductId);
 
-        // SellItem (М) <-> Size (1)
+
         modelBuilder.Entity<SellItem>()
             .HasOne(si => si.Size)
-            .WithMany() // У Size нет коллекции SellItem, поэтому используем WithMany()
+            .WithMany() 
             .HasForeignKey(si => si.SizeId);
+
     }
 
 }

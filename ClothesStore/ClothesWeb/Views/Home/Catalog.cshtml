@@ -63,6 +63,18 @@
                             <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id"
                                asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
 
+                                    <form asp-controller="Home"
+                                          asp-action="DeleteCard"
+                                          method="post">
+
+                                        <input type="hidden" name="id" value="@item.Id" />
+                                        <input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
+                                        <button type="submit" class="btn btn-sm btn-danger">
+                                            Снять с продажи
+                                        </button>
+                                    </form>
+
                             <a asp-controller="Home" asp-action="Supply" asp-route-id="@item.Id" class="btn btn-warning">
                                 Поставка
                             </a>

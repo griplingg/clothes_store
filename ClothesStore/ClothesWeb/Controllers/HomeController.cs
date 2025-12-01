@@ -84,10 +84,10 @@ namespace ClothesWeb.Controllers
         [HttpGet]
         public IActionResult AddSupplier()
         {
-            ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
-            {
+                ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
+                {
                 
-            }).ToList();
+                }).ToList();
 
             return View();
         }
@@ -117,10 +117,12 @@ namespace ClothesWeb.Controllers
         [HttpGet]
         public IActionResult Catalog(string searchString)
         {
-            var products = _context.Products.Include(p => p.Category)
-        .Include(p => p.ProductSizes)
-        .ThenInclude(ps => ps.Size)
-        .AsQueryable();
+            var products = _context.Products
+                .Where(p => p.IsDeleted == false)
+                .Include(p => p.Category)
+                .Include(p => p.ProductSizes)
+                .ThenInclude(ps => ps.Size)
+                .AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -184,6 +186,7 @@ namespace ClothesWeb.Controllers
             productToUpdate.Color = product.Color; 
             productToUpdate.SupplierId = product.SupplierId;
             productToUpdate.CategoryId = product.CategoryId;
+            productToUpdate.IsDeleted = false;
 
 
 
@@ -197,6 +200,41 @@ namespace ClothesWeb.Controllers
                 return View(productToUpdate); 
             }
 
+            return RedirectToAction("Catalog", new { searchString = searchString }); ;
+
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+
+        public IActionResult DeleteCard(int Id, string? searchString)
+        {
+           
+            ViewBag.SearchString = searchString;
+            var productToUpdate = _context.Products.FirstOrDefault(p => p.Id == Id);
+
+
+            if (productToUpdate == null)
+            {
+                return NotFound();
+            }
+
+
+            productToUpdate.IsDeleted = true;
+
+
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Ошибка удаления: " + ex.Message);
+                return RedirectToAction("Catalog", new { searchString = searchString });
+            
+        }
             return RedirectToAction("Catalog", new { searchString = searchString }); ;
 
 
@@ -278,7 +316,8 @@ namespace ClothesWeb.Controllers
         public IActionResult Supply(int id)
         {
             var product = _context.Products.FirstOrDefault(p => p.Id == id);
-            if (product == null) return NotFound();
+            if (product == null) 
+                return NotFound();
 
             ViewBag.Sizes = _context.Sizes.ToList();
 

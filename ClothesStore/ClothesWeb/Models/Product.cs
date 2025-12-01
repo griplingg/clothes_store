@@ -20,6 +20,7 @@ namespace ClothesWeb.Models
 
         public int SupplierId { get; set; }
         public int? CategoryId { get; set; }
+        public bool IsDeleted { get; set; }
         
 
 
