@@ -24,6 +24,10 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     public DbSet<Category> Category { get; set; }
 
 
+    public DbSet<ReturnProduct> ReturnProducts { get; set; }
+    public DbSet<ReturnStatus> ReturnStatuses { get; set; }
+
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
@@ -70,6 +74,31 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .HasOne(si => si.Size)
             .WithMany() 
             .HasForeignKey(si => si.SizeId);
+
+
+
+        modelBuilder.Entity<ReturnProduct>()
+            .HasOne(r => r.Status)
+            .WithMany()
+            .HasForeignKey(r => r.StatusId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+        
+        modelBuilder.Entity<ReturnProduct>()
+            .HasOne(r => r.Sell)
+            .WithMany()
+            .HasForeignKey(r => r.SellId)
+            .OnDelete(DeleteBehavior.Restrict);
+
+
+        modelBuilder.Entity<ReturnProduct>()
+            .HasOne(r => r.SellItem)          
+            .WithMany(s => s.Returns)         
+            .HasForeignKey(r => r.SellItemId) 
+            .OnDelete(DeleteBehavior.Restrict);
+
+
+   
 
     }
 

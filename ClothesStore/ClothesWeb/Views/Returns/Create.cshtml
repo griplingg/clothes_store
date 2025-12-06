@@ -1,0 +1,23 @@
+﻿@model ClothesWeb.Models.ReturnProduct
+
+<h2>Причина возврата</h2>
+
+<form asp-action="Create" method="post">
+    <input type="hidden" asp-for="SellItemId" />
+    <input type="hidden" asp-for="SellId" />
+
+    <div class="form-group">
+        <label>Причина возврата</label>
+        <textarea asp-for="Reason" class="form-control"></textarea>
+    </div>
+
+    <br />
+
+    <button type="submit" class="btn btn-danger">
+        Подтвердить возврат
+    </button>
+
+    <a asp-action="Index" class="btn btn-secondary">
+        Отмена
+    </a>
+</form>

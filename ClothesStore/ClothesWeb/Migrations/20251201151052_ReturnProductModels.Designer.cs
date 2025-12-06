@@ -4,6 +4,7 @@ using ClothesWeb;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ClothesWeb.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20251201151052_ReturnProductModels")]
+    partial class ReturnProductModels
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -104,6 +107,32 @@ namespace ClothesWeb.Migrations
                     b.ToTable("ProductSizes");
                 });
 
+            modelBuilder.Entity("ClothesWeb.Models.ReturnItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ReturnId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SellItemId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ReturnId");
+
+                    b.HasIndex("SellItemId");
+
+                    b.ToTable("ReturnItems");
+                });
+
             modelBuilder.Entity("ClothesWeb.Models.ReturnProduct", b =>
                 {
                     b.Property<int>("Id")
@@ -135,8 +164,6 @@ namespace ClothesWeb.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("SellId");
-
-                    b.HasIndex("SellItemId");
 
                     b.HasIndex("StatusId");
 
@@ -507,17 +534,30 @@ namespace ClothesWeb.Migrations
                     b.Navigation("Size");
                 });
 
+            modelBuilder.Entity("ClothesWeb.Models.ReturnItem", b =>
+                {
+                    b.HasOne("ClothesWeb.Models.ReturnProduct", "Return")
+                        .WithMany("Items")
+                        .HasForeignKey("ReturnId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ClothesWeb.Models.SellItem", "SellItem")
+                        .WithMany()
+                        .HasForeignKey("SellItemId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Return");
+
+                    b.Navigation("SellItem");
+                });
+
             modelBuilder.Entity("ClothesWeb.Models.ReturnProduct", b =>
                 {
                     b.HasOne("ClothesWeb.Models.Sell", "Sell")
                         .WithMany()
                         .HasForeignKey("SellId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("ClothesWeb.Models.SellItem", "SellItem")
-                        .WithMany("Returns")
-                        .HasForeignKey("SellItemId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -528,8 +568,6 @@ namespace ClothesWeb.Migrations
                         .IsRequired();
 
                     b.Navigation("Sell");
-
-                    b.Navigation("SellItem");
 
                     b.Navigation("Status");
                 });
@@ -622,14 +660,14 @@ namespace ClothesWeb.Migrations
                     b.Navigation("ProductSizes");
                 });
 
+            modelBuilder.Entity("ClothesWeb.Models.ReturnProduct", b =>
+                {
+                    b.Navigation("Items");
+                });
+
             modelBuilder.Entity("ClothesWeb.Models.Sell", b =>
                 {
                     b.Navigation("SellItem");
-                });
-
-            modelBuilder.Entity("ClothesWeb.Models.SellItem", b =>
-                {
-                    b.Navigation("Returns");
                 });
 
             modelBuilder.Entity("ClothesWeb.Models.Size", b =>

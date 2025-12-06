@@ -1,0 +1,31 @@
+﻿@model IEnumerable<ReturnSelectViewModel>
+
+<h2>Выбор товара для возврата</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Размер</th>
+            <th>Доступно к возврату</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.SizeName</td>
+                <td>@item.AvailableCount</td>
+                <td>
+                    <a asp-action="Create"
+                       asp-route-sellItemId="@item.SellItemId"
+                       class="btn btn-warning btn-sm">
+                        Выбрать
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
