@@ -350,5 +350,38 @@ namespace ClothesWeb.Controllers
             _context.SaveChanges();
             return RedirectToAction("EditCard", new { id = productId });
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult AddCategory(string name, string? searchString)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                TempData["Error"] = "Название категории не может быть пустым";
+                return RedirectToAction("Catalog", new { searchString });
+            }
+
+            if (_context.Category.Any(c => c.Name == name))
+            {
+                TempData["Error"] = "Категория с таким названием уже существует.";
+                return RedirectToAction("Catalog", new { searchString });
+            }
+
+            var category = new Category { Name = name };
+            _context.Category.Add(category);
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                TempData["Error"] = "Ошибка при сохранении категории: " + ex.Message;
+                return RedirectToAction("Catalog", new { searchString });
+            }
+
+            return RedirectToAction("Catalog", new { searchString });
+        }
+
     }
 }

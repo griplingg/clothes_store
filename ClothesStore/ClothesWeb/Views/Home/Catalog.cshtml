@@ -8,6 +8,20 @@
 <form asp-controller="Home" asp-action="Create" method="get">
     <button type="submit">Добавить новый товар</button>
 </form>
+<br>
+
+<button id="showCategoryForm" class="btn btn-primary mb-3">Добавить категорию</button>
+
+<div id="categoryFormContainer" style="display: none; margin-bottom: 20px;">
+    <form asp-controller="Home" asp-action="AddCategory" method="post" class="form-inline">
+        <input type="text" name="Name" class="form-control me-2" placeholder="Название категории" required />
+
+        <input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
+        <button type="submit" class="btn btn-success">Сохранить</button>
+        <button type="button" id="cancelCategoryForm" class="btn btn-secondary">Отмена</button>
+    </form>
+</div>
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">Каталог</h1>
@@ -86,7 +100,17 @@
         
 }
 }
+        <script>
+            document.getElementById("showCategoryForm").addEventListener("click", function () {
+                document.getElementById("categoryFormContainer").style.display = "block";
+                this.style.display = "none"; 
+            });
 
+            document.getElementById("cancelCategoryForm").addEventListener("click", function () {
+                document.getElementById("categoryFormContainer").style.display = "none";
+                document.getElementById("showCategoryForm").style.display = "inline-block";
+            });
+        </script>
 
 <style>
     .card {
