@@ -49,7 +49,7 @@ app.UseEndpoints(endpoints =>
 {
         endpoints.MapControllerRoute(
         name: "default",
-        pattern: "{controller=Home}/{action=Index}/{id?}");
+        pattern: "{controller=Account}/{action=Login}/{id?}");
 });
 /*
  создание ролей и админа для первого запуска (больше не требуется)
