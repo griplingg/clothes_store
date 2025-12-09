@@ -33,6 +33,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public IActionResult EditSupplierCard(int id, string searchString)
         {
             var supplier = _context.Supplier.AsQueryable().FirstOrDefault(p => p.Id == id);
@@ -45,7 +46,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+        [Authorize(Roles = "Manager")]
         public IActionResult EditSupplierCard(Supplier supplier, string? searchString)
         {
             
@@ -82,6 +83,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddSupplier()
         {
                 ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
@@ -94,6 +96,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddSupplier(Supplier supplier)
         {
             if (!ModelState.IsValid)
@@ -143,7 +146,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Manager")]
         public IActionResult EditCard(int id, string searchString)
         {
             var product = _context.Products.Include(p => p.Category).Include(p => p.Supplier).Include(p => p.ProductSizes)
@@ -160,7 +163,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+        [Authorize(Roles = "Manager")]
         public IActionResult EditCard(Product product, string? searchString)
         {
             ViewBag.Categories = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
@@ -207,7 +210,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-
+        [Authorize(Roles = "Manager")]
         public IActionResult DeleteCard(int Id, string? searchString)
         {
            
@@ -353,6 +356,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public IActionResult AddCategory(string name, string? searchString)
         {
             if (string.IsNullOrWhiteSpace(name))

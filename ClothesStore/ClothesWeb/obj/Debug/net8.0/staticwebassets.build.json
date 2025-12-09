@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "TeKCiH4RN2/p06qPpzrfGHxh0lmdmAMezdWUztmg+No=",
+  "Hash": "becHqynuXlCaN86xc5yia8mhrRIDRDxpFRh0otvi2Rg=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1317,6 +1317,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\ClothesWeb.bundle.scp.css"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Catalog.css",
+      "SourceId": "ClothesWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
+      "BasePath": "_content/ClothesWeb",
+      "RelativePath": "css/Catalog#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "fnzivmtmw3",
+      "Integrity": "+2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2+YvjPoFo9rQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\Catalog.css"
     },
     {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\site.css",
@@ -2762,6 +2783,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-wpFXSlyNvrfMaDJqaPBbr5+P9UVs2qu3rhu5sxA1Vc4="
+        }
+      ]
+    },
+    {
+      "Route": "css/Catalog.css",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Catalog.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "264"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2+YvjPoFo9rQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 08 Dec 2025 06:26:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-+2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2+YvjPoFo9rQ="
+        }
+      ]
+    },
+    {
+      "Route": "css/Catalog.fnzivmtmw3.css",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Catalog.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "264"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"+2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2+YvjPoFo9rQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Mon, 08 Dec 2025 06:26:25 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "fnzivmtmw3"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Catalog.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-+2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2+YvjPoFo9rQ="
         }
       ]
     },

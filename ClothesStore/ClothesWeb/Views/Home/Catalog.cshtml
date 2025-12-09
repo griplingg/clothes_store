@@ -5,6 +5,10 @@
     ViewData["Title"] = "Каталог";
 }
 
+<head>
+    <link rel="stylesheet" href="~/css/StyleIndex.css" />
+</head>
+<body>
 <form asp-controller="Home" asp-action="Create" method="get">
     <button type="submit">Добавить новый товар</button>
 </form>
@@ -100,6 +104,7 @@
         
 }
 }
+</body>
         <script>
             document.getElementById("showCategoryForm").addEventListener("click", function () {
                 document.getElementById("categoryFormContainer").style.display = "block";
@@ -112,19 +117,3 @@
             });
         </script>
 
-<style>
-    .card {
-        border-radius: 16px;
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
-        }
-
-    h1 {
-        font-weight: 600;
-        letter-spacing: 1px;
-    }
-</style>

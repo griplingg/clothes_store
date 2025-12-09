@@ -50,4 +50,9 @@
             }
         </tbody>
     </table>
+
+}
+@if (ViewBag.FileName != null)
+{
+    <a href="@Url.Action("DownloadStatistics", "Reports", new { fileName = ViewBag.FileName })" class="btn btn-primary">Скачать файл</a>
 }

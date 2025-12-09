@@ -32,7 +32,7 @@ public class SellController : Controller
     {
         if (model.Items == null || model.Items.Count == 0)
         {
-            ModelState.AddModelError("", "Необходимо добавить хотя бы одну позицию товара.");
+            ModelState.AddModelError("","Необходимо добавить хотя бы одну позицию товара.");
         }
 
         if (ModelState.IsValid)
