@@ -40,11 +40,36 @@
     </div>
 </form>
 
+@await Html.PartialAsync("_ValidationScriptsPartial")
+
+@{
+    var successMessage = TempData["SuccessMessage"] as string;
+}
+
+<div id="success-popup" style="display:none;">
+    @TempData["SuccessMessage"]
+</div>
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-        <script>
+    <script>
+        window.addEventListener('DOMContentLoaded', (event) => {
+            var popup = document.getElementById('success-popup');
+            if (popup && popup.innerText.trim() !== "") {
+                var div = document.createElement('div');
+                div.innerText = popup.innerText;
+                div.className = 'popup-success';
+                document.body.appendChild(div);
+
+                setTimeout(() => {
+                    div.style.opacity = '0';
+                    setTimeout(() => div.remove(), 500);
+                }, 3000);
+            }
+        });
+
+
+        
+   
+
             var itemIndex = 0;
 
             var products = @Html.Raw(Json.Serialize(Model.AllProducts.Select(p => new { p.Id, p.Name })));

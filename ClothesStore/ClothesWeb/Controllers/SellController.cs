@@ -91,8 +91,8 @@ public class SellController : Controller
 
 
             await _context.SaveChangesAsync();
-
-            return RedirectToAction("Index"); 
+            TempData["SuccessMessage"] = "Продажа проведена успешно";
+            return RedirectToAction("AddPurchase"); 
         }
 
         model.AllProducts = await _context.Products.ToListAsync();

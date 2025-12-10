@@ -24,6 +24,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"fnzivmtmw3"},{"Name":"integrity","Value":"sha256-\u002B2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2\u002BYvjPoFo9rQ="},{"Name":"label","Value":"_content/ClothesWeb/css/Catalog.css"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"264"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022\u002B2vcMXfKvD0Yhkd48qbJ0MHz6QcmVZK2\u002BYvjPoFo9rQ=\u0022"},{"Name":"Last-Modified","Value":"Mon, 08 Dec 2025 06:26:25 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ClothesWeb/css/Login.2z6x2juoeh.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Login.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"2z6x2juoeh"},{"Name":"integrity","Value":"sha256-ju8AcBZWqxYwDxx0Aq4Md/OPKh7qa4dFBrSZCsky3aA="},{"Name":"label","Value":"_content/ClothesWeb/css/Login.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1685"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ju8AcBZWqxYwDxx0Aq4Md/OPKh7qa4dFBrSZCsky3aA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 09 Dec 2025 17:21:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ClothesWeb/css/Login.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\Login.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-ju8AcBZWqxYwDxx0Aq4Md/OPKh7qa4dFBrSZCsky3aA="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1685"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022ju8AcBZWqxYwDxx0Aq4Md/OPKh7qa4dFBrSZCsky3aA=\u0022"},{"Name":"Last-Modified","Value":"Tue, 09 Dec 2025 17:21:57 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/ClothesWeb/css/site.c2tiyv64ts.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

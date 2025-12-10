@@ -4,7 +4,10 @@
 
 
 @model LoginViewModel
-
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+<div class="login-container">
 <h2>Вход</h2>
 
 <form asp-action="Login" method="post">
@@ -20,14 +23,9 @@
         <span asp-validation-for="Password"></span>
     </div>
 
-    <div>
-        <label>
-            <input asp-for="RememberMe" />
-            Запомнить меня
-        </label>
-    </div>
 
     <button type="submit">Войти</button>
 
     <div asp-validation-summary="All"></div>
 </form>
+</div>
