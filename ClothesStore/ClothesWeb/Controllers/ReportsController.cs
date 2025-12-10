@@ -2,6 +2,8 @@
 using ClothesWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace ClothesWeb.Controllers
 {
@@ -18,6 +20,12 @@ namespace ClothesWeb.Controllers
         [Authorize(Roles = "Manager")]
         public IActionResult Statistics()
         {
+            ViewBag.Employee = _context.Users.Select(u => new SelectListItem
+            {
+                Value = u.Id,
+                Text = u.UserName
+            }).ToList();
+            ViewBag.SelectedEmployeeId = "";
             return View();
         }
 
@@ -52,7 +60,7 @@ namespace ClothesWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Manager")]
-        public IActionResult Statistics(DateTime startDate, DateTime endDate, DateTime clientDate)
+        public IActionResult Statistics(DateTime startDate, DateTime endDate, DateTime clientDate, String? employeeId)
         {
             if (startDate > endDate)
             {
@@ -65,12 +73,19 @@ namespace ClothesWeb.Controllers
                 ViewData["Error"] = "Статистика для будущего времени недоступна.";
                 return View();
             }
-
-            var sales = _context.Sells
-                .Include(s => s.SellItem)
-                    .ThenInclude(si => si.Product)
+            var query = _context.Sells
+        .       Include(s => s.SellItem)
+                .ThenInclude(si => si.Product)
                 .Where(s => s.Date >= startDate && s.Date <= endDate)
-                .ToList();
+                .AsQueryable();
+
+            if (!string.IsNullOrEmpty(employeeId))
+            {
+                query = query.Where(s => s.EmployeeId == employeeId);
+            }
+
+            var sales = query.ToList();
+ 
 
             decimal totalRevenue = sales
                 .SelectMany(s => s.SellItem)
@@ -86,6 +101,15 @@ namespace ClothesWeb.Controllers
             using (var writer = new StreamWriter(filePath))
             {
                 writer.WriteLine($"Статистика с {startDate:yyyy-MM-dd} по {endDate:yyyy-MM-dd}");
+                if (!string.IsNullOrEmpty(employeeId))
+                {
+                    string employeeName = _context.Users
+                        .Where(u => u.Id == employeeId) 
+                       .Select(u => u.UserName)        
+                       .FirstOrDefault();
+                    writer.WriteLine($"Отчет по сотруднику: {employeeName}");
+                }
+                else { writer.WriteLine("Отчет по всем сотрудникам"); }
                 writer.WriteLine("Дата продажи | Товар | Количество | Цена | Сумма");
 
                 foreach (var sale in sales)
@@ -99,7 +123,12 @@ namespace ClothesWeb.Controllers
                 writer.WriteLine($"Общая сумма за период: {totalRevenue}");
                 writer.WriteLine(new string('-', 50));
             }
-
+            ViewBag.Employee = _context.Users.Select(u => new SelectListItem
+            {
+                Value = u.Id,
+                Text = u.UserName
+            }).ToList();
+            ViewBag.SelectedEmployeeId = employeeId ?? ""; ;
             ViewBag.TotalRevenue = totalRevenue;
             ViewBag.StartDate = startDate.ToString("yyyy-MM-dd");
             ViewBag.EndDate = endDate.ToString("yyyy-MM-dd");
@@ -108,6 +137,8 @@ namespace ClothesWeb.Controllers
 
             return View();
         }
+
+
         public IActionResult DownloadStatistics(string fileName)
         {
             var folderPath = Path.Combine(Directory.GetCurrentDirectory(), "StatisticsFiles");

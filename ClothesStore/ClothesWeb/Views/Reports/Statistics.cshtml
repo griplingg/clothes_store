@@ -16,7 +16,24 @@
     <div class="mb-3">
         <label for="endDate">Дата конца:</label>
         <input type="date" name="endDate" class="form-control" value="@ViewBag.EndDate" required />
-    </div>
+    <div class="mb-3">
+    <label for="employeeId">Сотрудник (необязательно)</label>
+            <select name="employeeId" id="employeeId" class="form-control">
+                <option value="">Отчет по всем сотрудникам</option>
+
+                @foreach (var emp in ViewBag.Employee as List<SelectListItem>)
+                {
+                    var selectedId = ViewBag.SelectedEmployeeId as string;
+                    var isSelected = emp.Value == selectedId;
+                    <option value="@emp.Value" selected="@isSelected">
+                        @emp.Text
+                    </option>
+                }
+            </select>
+</div>
+
+
+
     <button type="submit" class="btn btn-primary">Показать статистику</button>
 </form>
 @if (ViewData["Error"] != null)

@@ -1,4 +1,4 @@
-﻿/* ---------------- Общие стили формы ---------------- */
+﻿
 form {
     max-width: 1000px;
     margin: 0 auto;
@@ -15,7 +15,7 @@ hr {
     border-top: 1px solid #dee2e6;
 }
 
-/* ---------------- Таблица товаров ---------------- */
+
 #itemsTable,
 #itemsTable tbody {
     width: 100%;
@@ -35,7 +35,7 @@ hr {
         font-weight: 600;
     }
 
-/* ---------------- Inputs и selects ---------------- */
+
 input[type="text"],
 input[type="number"],
 select {
@@ -63,13 +63,13 @@ select.size-select {
     margin-top: 0;
 }
 
-/* Малые инпуты и селекты */
+
 .form-control-sm {
     padding: 0.25rem 0.5rem;
     font-size: 0.75rem;
 }
 
-/* ---------------- Кнопки ---------------- */
+
 button, .btn {
     display: inline-block;
     font-weight: 400;
@@ -125,7 +125,7 @@ button, .btn {
     font-size: 0.75rem;
 }
 
-/* ---------------- Карточки сообщений/покупок ---------------- */
+
 .card {
     border: 1px solid #dee2e6;
     border-radius: 0.25rem;
@@ -145,14 +145,13 @@ button, .btn {
     padding: 1rem;
 }
 
-/* ---------------- Маленькие тексты и подсказки ---------------- */
 small.text-muted,
 .stock-info {
     font-size: 0.75rem;
     color: #6c757d;
 }
 
-/* ---------------- Уведомления успешных операций ---------------- */
+
 .popup-success {
     position: fixed;
     top: 1rem;
@@ -167,14 +166,13 @@ small.text-muted,
     transition: opacity 0.5s ease-in-out;
 }
 
-/* ---------------- Ошибки валидации ---------------- */
 .field-validation-valid,
 .text-danger {
     font-size: 0.75rem;
     color: #dc3545;
 }
 
-/* ---------------- Динамические строки ---------------- */
+
 #itemsTable tbody tr:hover {
     background-color: #f1f1f1;
 }
@@ -191,23 +189,10 @@ small.text-muted,
     font-size: 0.75rem;
 }
 
-/* ---------------- Подсказки количества в наличии ---------------- */
+
 .stock-info {
     display: block;
     margin-top: 0.15rem;
     font-style: italic;
     color: #555;
 }
-
-/* ---------------- Media queries для адаптивности ---------------- */
-@media (max-width: 768px) {
-    #itemsTable th, #itemsTable td {
-        font-size: 0.75rem;
-        padding: 0.35rem;
-    }
-
-    .btn, input, select {
-        font-size: 0.75rem;
-    }
-}
-s

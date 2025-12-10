@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "4OlQRte9qMZfR8Jkazq7orClRSscPE8dVZbWtXEx5OE=",
+  "Hash": "yRUtsS2rzXvozvvZHN0z/zOjWmtZWiZuwgmSDE9nO1M=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "nqeafgn2hi",
-      "Integrity": "4fedKbuO/p/DYsNQ7WEl0Ly9tkRqrZp6QaEQpH1MX4A=",
+      "Fingerprint": "anhhuvdu3c",
+      "Integrity": "aoJ2jAGz9FvLgwh6S0bXPik9isbaTN/qcYIF7JNF1mo=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Universal.css"
@@ -3157,6 +3157,51 @@
       ]
     },
     {
+      "Route": "css/Universal.anhhuvdu3c.css",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Universal.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "3469"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"aoJ2jAGz9FvLgwh6S0bXPik9isbaTN/qcYIF7JNF1mo=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Wed, 10 Dec 2025 20:27:40 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "anhhuvdu3c"
+        },
+        {
+          "Name": "label",
+          "Value": "css/Universal.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-aoJ2jAGz9FvLgwh6S0bXPik9isbaTN/qcYIF7JNF1mo="
+        }
+      ]
+    },
+    {
       "Route": "css/Universal.css",
       "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Universal.css",
       "Selectors": [],
@@ -3167,7 +3212,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4582"
+          "Value": "3469"
         },
         {
           "Name": "Content-Type",
@@ -3175,11 +3220,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"4fedKbuO/p/DYsNQ7WEl0Ly9tkRqrZp6QaEQpH1MX4A=\""
+          "Value": "\"aoJ2jAGz9FvLgwh6S0bXPik9isbaTN/qcYIF7JNF1mo=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 10 Dec 2025 17:08:07 GMT"
+          "Value": "Wed, 10 Dec 2025 20:27:40 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3189,52 +3234,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-4fedKbuO/p/DYsNQ7WEl0Ly9tkRqrZp6QaEQpH1MX4A="
-        }
-      ]
-    },
-    {
-      "Route": "css/Universal.nqeafgn2hi.css",
-      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Universal.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "4582"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"4fedKbuO/p/DYsNQ7WEl0Ly9tkRqrZp6QaEQpH1MX4A=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 10 Dec 2025 17:08:07 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "nqeafgn2hi"
-        },
-        {
-          "Name": "label",
-          "Value": "css/Universal.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-4fedKbuO/p/DYsNQ7WEl0Ly9tkRqrZp6QaEQpH1MX4A="
+          "Value": "sha256-aoJ2jAGz9FvLgwh6S0bXPik9isbaTN/qcYIF7JNF1mo="
         }
       ]
     },
