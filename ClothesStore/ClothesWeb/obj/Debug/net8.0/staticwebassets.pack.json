@@ -17,6 +17,10 @@
       "PackagePath": "staticwebassets\\css\\StyleIndex.css"
     },
     {
+      "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Universal.css",
+      "PackagePath": "staticwebassets\\css\\Universal.css"
+    },
+    {
       "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },

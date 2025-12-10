@@ -273,6 +273,11 @@ namespace ClothesWeb.Controllers
              }).ToList();
 
             ViewBag.Sizes = _context.Sizes.ToList();
+            ViewBag.Categories = _context.Category.Select(s => new SelectListItem
+            {
+                Value = s.Id.ToString(),
+                Text = s.Name
+            }).ToList();
             return View();
         }
 
@@ -287,15 +292,42 @@ namespace ClothesWeb.Controllers
                     foreach (var e in err.Value.Errors)
                     { Console.WriteLine($"ошибка: {err.Key} Ч {e.ErrorMessage}"); }
                 }
-
+                ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
+                {
+                    Value = s.Id.ToString(),
+                    Text = s.OrganizationName
+                }).ToList();
                 ViewBag.Sizes = _context.Sizes.ToList();
+
+                ViewBag.Categories = new SelectList(_context.Category, "Id", "Name", product?.CategoryId);
+           
                 return View(product);
             }
 
 
-
+            try { 
             _context.Products.Add(product);
-            _context.SaveChanges();
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "ќшибка при добавлении нового товара: одно из полей введено некорректно/одного из значений не существует");
+                ViewBag.Sizes = _context.Sizes.ToList();
+                ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
+                {
+                    Value = s.Id.ToString(),
+                    Text = s.OrganizationName
+                }).ToList();
+                ViewBag.Categories= _context.Category.Select(s => new SelectListItem
+                {
+                    Value = s.Id.ToString(),
+                    Text = s.Name
+                }).ToList();
+                return View(product);
+
+            }
+      
+            
             if (sizeIds != null && quantities != null && sizeIds.Length == quantities.Length)
             {
                 for (int i = 0; i < sizeIds.Length; i++)

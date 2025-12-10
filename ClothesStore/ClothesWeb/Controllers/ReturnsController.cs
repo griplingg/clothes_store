@@ -38,28 +38,35 @@ namespace ClothesWeb.Controllers
         }
 
 
-
-        public IActionResult CreateSelect()
+        public IActionResult CreateSelect(string? searchString)
         {
-            var sellItems = _context.SellItems
-                .Include(si => si.Product)
-                .Include(si => si.Size)
-                .Include(si => si.Returns)
-                .ToList();
+            var dateFrom = DateTime.Now.AddDays(-14);
 
-            var availableItems = sellItems
-                .Where(si => si.Quantity > si.Returns.Count)
-                .Select(si => new ReturnSelectViewModel
-                {
-                    SellItemId = si.Id,
-                    ProductName = si.Product.Name,
-                    SizeName = si.Size.Name,
-                    AvailableCount = si.Quantity - si.Returns.Count
-                })
-                .ToList();
+            var query = _context.Sells
+                .Include(s => s.SellItem)
+                    .ThenInclude(si => si.Product)
+                .Include(s => s.SellItem)
+                    .ThenInclude(si => si.Size)
+                .Include(s => s.SellItem)
+                    .ThenInclude(si => si.Returns)
+                .Where(s => s.Date >= dateFrom);
 
-            return View(availableItems);
+        
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                
+                query = query.Where(s => s.SellItem.Any(si => si.Product.Name.Contains(searchString)));
+            }
+
+
+            var sells = query.OrderByDescending(s => s.Date).ToList();
+
+            ViewBag.SearchString = searchString;
+
+            return View(sells);
         }
+
+
 
         public IActionResult Create(int sellItemId)
         {
@@ -98,22 +105,7 @@ namespace ClothesWeb.Controllers
         }
 
 
-       /* [HttpPost]
-        [Authorize(Roles = "manager")] 
-        public IActionResult ChangeStatus(int id, int newStatusId)
-        {
-            var returnProduct = _context.ReturnProducts
-                .FirstOrDefault(r => r.Id == id);
-
-            if (returnProduct == null)
-                return NotFound();
-
-            returnProduct.StatusId = newStatusId; 
-            _context.SaveChanges();
-
-            return RedirectToAction(nameof(Index));
-        }*/
-
+      
         [Authorize(Roles = "Manager")]
         public IActionResult ChangeStatus(int id, string actionType)
         {

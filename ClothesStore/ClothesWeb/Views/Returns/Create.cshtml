@@ -1,7 +1,10 @@
 ﻿@model ClothesWeb.Models.ReturnProduct
 
 <h2>Причина возврата</h2>
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
 
+</head>
 <form asp-action="Create" method="post">
     <input type="hidden" asp-for="SellItemId" />
     <input type="hidden" asp-for="SellId" />

@@ -1,6 +1,10 @@
 ﻿@{
     ViewData["Title"] = "Статистика продаж";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
 
 <h1 class="mb-4">Статистика продаж</h1>
 
@@ -21,20 +25,26 @@
     <hr />
     <h3>Оборот за период: <strong>@ViewBag.TotalRevenue.ToString("C")</strong></h3>
 
-    <table class="table table-bordered mt-3">
-        <thead>
-            <tr>
-                <th>Дата продажи</th>
-                <th>Товар</th>
-                <th>Количество</th>
-                <th>Цена</th>
-                <th>Сумма</th>
-            </tr>
-        </thead>
-        <tbody>
             @foreach (var sell in ViewBag.Sales as List<ClothesWeb.Models.Sell>)
-            {
-                foreach (var item in sell.SellItem)
+            { 
+                <div class="card mb-3">
+            <div class="card-header bg-light">
+                <strong>Покупка № @sell.Id</strong><br />
+                <small>Дата: @sell.Date.ToString("yyyy-MM-dd")</small>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-sm table-bordered m-0">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Товар</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                @foreach (var item in sell.SellItem)
                 {
                     <tr>
                         <td>@sell.Date.ToString("yyyy-MM-dd")</td>
@@ -46,11 +56,13 @@
                         }
                         <td>@total.ToString("C")</td>
                     </tr>
-                }
+          
             }
         </tbody>
     </table>
-
+            </div>
+        </div>
+    }
 }
 @if (ViewBag.FileName != null)
 {

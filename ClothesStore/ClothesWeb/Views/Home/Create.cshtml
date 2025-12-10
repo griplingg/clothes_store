@@ -3,11 +3,15 @@
 @{
     ViewData["Title"] = "Добавить товар";
 }
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
 
+</head>
 <h2>Добавление нового товара</h2>
 
 <form asp-action="Create" method="post">
     @Html.AntiForgeryToken()
+    <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="mb-3">
         <label asp-for="Name"></label>
@@ -31,6 +35,12 @@
         <input asp-for="ArticleNumber" class="form-control"/>
     </div>
 
+    <div class="mb-3">
+
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+            <option value="">-- Выберите категорию --</option>
+        </select>
+    </div>
     <div class="mb-3">
         <label asp-for="SupplierId">Поставщик</label>
         <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Supplier">
