@@ -7,8 +7,8 @@
 </head>
 
 <h1 class="mb-4">Статистика продаж</h1>
-
 <form asp-action="Statistics" method="post">
+    <input type="hidden" name="ClientDate" id="clientDate" />
     <div class="mb-3">
         <label for="startDate">Дата начала:</label>
         <input type="date" name="startDate" class="form-control" value="@ViewBag.StartDate" required />
@@ -19,7 +19,10 @@
     </div>
     <button type="submit" class="btn btn-primary">Показать статистику</button>
 </form>
-
+@if (ViewData["Error"] != null)
+{
+    <div class="text-danger">@ViewData["Error"]</div>
+}
 @if (ViewBag.TotalRevenue != null)
 {
     <hr />
@@ -68,3 +71,8 @@
 {
     <a href="@Url.Action("DownloadStatistics", "Reports", new { fileName = ViewBag.FileName })" class="btn btn-primary">Скачать файл</a>
 }
+
+<script>
+    document.getElementById('clientDate').value =
+        new Date().toISOString();
+</script>

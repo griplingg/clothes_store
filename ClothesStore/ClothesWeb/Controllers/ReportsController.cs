@@ -52,11 +52,17 @@ namespace ClothesWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Manager")]
-        public IActionResult Statistics(DateTime startDate, DateTime endDate)
+        public IActionResult Statistics(DateTime startDate, DateTime endDate, DateTime clientDate)
         {
             if (startDate > endDate)
             {
-                ModelState.AddModelError("", "Дата начала не может быть позже даты конца.");
+                ViewData["Error"] =  "Дата начала не может быть позже даты конца.";
+                return View();
+            }
+
+            if (clientDate < startDate)
+            {
+                ViewData["Error"] = "Статистика для будущего времени недоступна.";
                 return View();
             }
 
