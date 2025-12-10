@@ -28,7 +28,7 @@ public class SellController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddPurchase(AddPurchaseViewModel model)
+    public async Task<IActionResult> AddPurchase(AddPurchaseViewModel model, DateTime clientDate)
     {
         if (model.Items == null || model.Items.Count == 0)
         {
@@ -39,7 +39,7 @@ public class SellController : Controller
         {
             var newSell = new Sell
             {
-                Date = DateTime.Now,
+                Date = clientDate,
                 PaymentMethod = model.PaymentMethod,
                 EmployeeId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value
             };

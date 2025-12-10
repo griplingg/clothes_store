@@ -106,6 +106,7 @@
         <label asp-for="PaymentMethod"></label>
         <input asp-for="PaymentMethod" class="form-control" />
         <span asp-validation-for="PaymentMethod" class="text-danger"></span>
+        <input type="hidden" name="ClientDate" id="clientDate" />
     </div>
 
     <hr />
@@ -569,6 +570,17 @@
                 }
             });
         });
+
+ 
+        function getLocalIsoDate(date) {
+            const year = date.getFullYear();
+            const month = String(date.getMonth() + 1).padStart(2, '0');
+            const day = String(date.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+        document.getElementById('clientDate').value =
+            getLocalIsoDate(new Date());
+
     </script>
 
 }

@@ -89,12 +89,11 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(ReturnProduct model)
+        public IActionResult Create(ReturnProduct model, DateTime clientDate)
         {
  
-            model.Date = DateTime.Now;
+            model.Date =clientDate;
             model.StatusId = 1; 
-
 
             model.EmployeeId = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
