@@ -36,10 +36,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/AddCategory.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRDYXRlZ29yeS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/AddSupplier.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxBZGRTdXBwbGllci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
@@ -62,10 +58,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/Privacy.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxQcml2YWN5LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Mi/source/repos/griplingg/clothes_store/ClothesStore/ClothesWeb/Views/Home/SupplierCatalog.cshtml]

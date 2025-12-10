@@ -117,11 +117,43 @@ namespace ClothesWeb.Controllers
             
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteUser(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+                return RedirectToAction("Manage");
+
+            // Запрет удаления самого себя
+            if (userId == _userManager.GetUserId(User))
+            {
+                TempData["Error"] = "Вы не можете удалить собственного пользователя.";
+                return RedirectToAction("Manage");
+            }
+
+            var user = await _userManager.FindByIdAsync(userId);
+            if (user == null)
+            {
+                TempData["Error"] = "Пользователь не найден.";
+                return RedirectToAction("Manage");
+            }
+
+            var result = await _userManager.DeleteAsync(user);
+
+            if (!result.Succeeded)
+            {
+                TempData["Error"] = string.Join(", ",
+                    result.Errors.Select(e => e.Description));
+            }
+
+            return RedirectToAction("Manage");
+        }
 
 
-    
 
-        
+
+
+
     }
 
 

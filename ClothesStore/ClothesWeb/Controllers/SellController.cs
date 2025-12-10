@@ -16,7 +16,7 @@ public class SellController : Controller
 
     public async Task<IActionResult> AddPurchase()
     {
-        var products = await _context.Products.ToListAsync();
+        var products = await _context.Products.Where(p => p.IsDeleted == false).ToListAsync();
 
         var model = new AddPurchaseViewModel
         {
