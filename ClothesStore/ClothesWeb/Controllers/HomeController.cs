@@ -347,7 +347,8 @@ namespace ClothesWeb.Controllers
             }
             return RedirectToAction("Catalog");
         }
-
+        [HttpGet]
+        [Authorize(Roles = "Manager")]
         public IActionResult Supply(int id)
         {
             var product = _context.Products.FirstOrDefault(p => p.Id == id);
@@ -360,6 +361,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Manager")]
         public IActionResult Supply(int productId, int sizeId, int quantity)
         {
 

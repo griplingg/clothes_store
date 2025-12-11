@@ -8,17 +8,22 @@
     <link rel="stylesheet" href="~/css/Universal.css" />
 
 </head>
+
+ @if (User.IsInRole("Manager"))
+    {
 <form asp-controller="Home" asp-action="AddSupplier" method="get">
     <button type="submit">Добавить нового поставщика</button>
 </form>
+    }
 
 <div class="container mt-4">
     <h1 class="text-center mb-4">Каталог</h1>
 
 
     <form asp-controller="Home" asp-action="SupplierCatalog" method="get">
-        <input type="text" name="searchString" class="form-control w-50 me-2" placeholder="Введите поставщика" value="@Context.Request.Query["searchString"]" />
-        <button type="submit">Поиск</button>
+        <input type="text" name="searchString" class="form-control w-50 me-2 mb-3" placeholder="Введите поставщика" value="@Context.Request.Query["searchString"]" />
+        <button  class="mb-3"type="submit">Поиск</button>
+  
     </form>
 
 
@@ -39,9 +44,11 @@
                             <p><small>Контактное лицо: @item.ContactName</small></p>
                             <p><small>Контактный телефон: @item.ContactPhone</small></p>
 
-                            
+                            @if (User.IsInRole("Manager"))
+                            {
                             <a asp-controller="Home" asp-action="EditSupplierCard" asp-route-id="@item.Id"
-                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
+                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a> 
+                            }
 
                         </div>
                     </div>
