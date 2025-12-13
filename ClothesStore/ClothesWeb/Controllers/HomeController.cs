@@ -13,11 +13,12 @@ namespace ClothesWeb.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
-
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context)
+        private readonly IWebHostEnvironment _env;
+        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IWebHostEnvironment env)
         {
             _logger = logger;
             _context = context;
+            _env = env;
         }
         [HttpGet]
         public IActionResult SupplierCatalog(string searchString)
@@ -164,7 +165,7 @@ namespace ClothesWeb.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize(Roles = "Manager")]
-        public IActionResult EditCard(Product product, string? searchString)
+        public async Task<IActionResult> EditCard(Product product, string? searchString, IFormFile? imageFile)
         {
             ViewBag.Categories = new SelectList(_context.Category, "Id", "Name", product.CategoryId);
             ViewBag.Suppliers = new SelectList(_context.Supplier, "Id", "OrganizationName", product.SupplierId);
@@ -182,7 +183,34 @@ namespace ClothesWeb.Controllers
             {
                 return NotFound();
             }
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var uploadPath = Path.Combine(_env.WebRootPath, "images", "products");
 
+                if (!Directory.Exists(uploadPath))
+                    Directory.CreateDirectory(uploadPath);
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(uploadPath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+             //удаление старой картинки из папки (подумать убрать или нет)
+                if (!string.IsNullOrEmpty(productToUpdate.ImagePath))
+                {
+                    var oldPath = Path.Combine(
+                        _env.WebRootPath,
+                        productToUpdate.ImagePath.TrimStart('/'));
+
+                    if (System.IO.File.Exists(oldPath))
+                        System.IO.File.Delete(oldPath);
+                }
+
+                productToUpdate.ImagePath = "/images/products/" + fileName;
+            }
 
             productToUpdate.Name = product.Name;
             productToUpdate.Price = product.Price;
@@ -318,7 +346,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(Product product, int[] sizeIds, int[] quantities)
+        public async Task<IActionResult>  Create(Product product, int[] sizeIds, int[] quantities, IFormFile imageFile)
         { 
             if (!ModelState.IsValid)
             {
@@ -339,6 +367,23 @@ namespace ClothesWeb.Controllers
                 return View(product);
             }
 
+            if (imageFile != null && imageFile.Length > 0)
+            {
+                var uploadPath = Path.Combine(_env.WebRootPath, "images", "products");
+
+                if (!Directory.Exists(uploadPath))
+                    Directory.CreateDirectory(uploadPath);
+
+                var fileName = Guid.NewGuid() + Path.GetExtension(imageFile.FileName);
+                var filePath = Path.Combine(uploadPath, fileName);
+
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await imageFile.CopyToAsync(stream);
+                }
+
+                product.ImagePath = "/images/products/" + fileName;
+            }
 
             try { 
             _context.Products.Add(product);

@@ -4,6 +4,7 @@ wwwroot\css\site.css
 wwwroot\css\StyleIndex.css
 wwwroot\css\Universal.css
 wwwroot\favicon.ico
+wwwroot\images\products\74f296b7-653a-45bd-88a2-dbda489dd81c.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

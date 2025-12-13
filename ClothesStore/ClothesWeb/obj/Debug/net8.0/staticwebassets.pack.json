@@ -29,6 +29,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\74f296b7-653a-45bd-88a2-dbda489dd81c.png",
+      "PackagePath": "staticwebassets\\images\\products\\74f296b7-653a-45bd-88a2-dbda489dd81c.png"
+    },
+    {
       "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

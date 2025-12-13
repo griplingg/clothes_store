@@ -10,7 +10,7 @@
 <div>
     <h2 class="text-center">Редактирование карточки товара</h2>
 
-    <form asp-controller="Home" asp-action="EditCard" method="post">
+    <form asp-controller="Home" asp-action="EditCard" method="post" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
         <input type="hidden" asp-for="Id" />
         <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
@@ -47,6 +47,12 @@
                 <option value="">-- Выберите категорию --</option>
             </select>
         </div>
+        <div class="mb-3">
+            <label>Изображение</label>
+            <input type="file" name="imageFile" class="form-control"
+                   accept="image/*" />
+        </div>
+
 
         <p>
             <small>

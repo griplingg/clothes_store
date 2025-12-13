@@ -9,7 +9,7 @@
 </head>
 <h2>Добавление нового товара</h2>
 
-<form asp-action="Create" method="post">
+<form asp-action="Create" method="post" enctype="multipart/form-data">
     @Html.AntiForgeryToken()
     <div asp-validation-summary="All" class="text-danger"></div>
 
@@ -73,6 +73,12 @@
                 </tr>
         }
     </table>
+
+    <div class="mb-3">
+        <label>Изображение</label>
+        <input type="file" name="imageFile" class="form-control"
+               accept="image/*" />
+    </div>
 
     <button type="submit" class="btn btn-primary">Добавить товар</button>
 </form>

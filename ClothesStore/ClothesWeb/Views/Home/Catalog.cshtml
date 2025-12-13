@@ -59,6 +59,21 @@
                         {
                             <div class="col-md-4 mb-4">
                                 <div class="card shadow-sm h-100">
+
+                                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                                    {
+                                        <img src="@item.ImagePath"
+                                             alt="@item.Name"
+                                             class="card-img-top mb-2"
+                                             style="height: 200px; object-fit: cover;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="/images/no-image.png"
+                                             alt="Нет изображения"
+                                             class="card-img-top mb-2"
+                                             style="height: 200px; object-fit: cover;" />
+                                    }
                                     <div class="card-body text-center">
 
                                         <h5 class="card-title">@item.Name</h5>
