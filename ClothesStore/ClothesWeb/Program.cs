@@ -23,6 +23,12 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options =>
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Account/AccessDenied";
+    options.LoginPath = "/Account/Login";
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -81,6 +87,8 @@ app.UseEndpoints(endpoints =>
 }
 
 await CreateRolesAndAdminAsync(app.Services);*/
+
+
 app.MapRazorPages();
 
 app.Run();

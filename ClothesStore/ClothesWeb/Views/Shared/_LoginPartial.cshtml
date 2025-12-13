@@ -11,7 +11,7 @@
         <li class="nav-link">Сеанс: @User.Identity?.Name</li>
     <li class="nav-item">
         <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Login", "Account", new { area = "" })">
-            <button  type="submit" class="nav-link btn btn-link text-dark">Выйти</button>
+            <button  type="submit" class="header_btn">Выйти</button>
         </form>
     </li>
 }

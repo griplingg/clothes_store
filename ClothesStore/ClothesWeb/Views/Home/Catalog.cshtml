@@ -12,7 +12,7 @@
     @if (User.IsInRole("Manager"))
     {
         <form asp-controller="Home" asp-action="Create" method="get">
-            <button type="submit">Добавить новый товар</button>
+            <button type="submit" class="btn btn-primary mb-3">Добавить новый товар</button>
         </form>
         <br>
 
@@ -37,8 +37,8 @@
 
 
         <form asp-controller="Home" asp-action="Catalog" method="get">
-            <input type="text" name="searchString" class="form-control w-50 me-2" placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
-            <button type="submit">Поиск</button>
+            <input type="text" name="searchString" class="form-control w-50 me-2 mb-3" placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
+            <button type="submit" class="btn btn-primary">Поиск</button>
         </form>
 
 

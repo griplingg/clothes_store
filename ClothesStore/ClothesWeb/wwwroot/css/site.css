@@ -16,7 +16,10 @@ html {
   position: relative;
   min-height: 100%;
 }
-
+header {
+    color: white;
+    background-color: black;
+}
 body {
   margin-bottom: 60px;
 }

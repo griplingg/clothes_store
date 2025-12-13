@@ -24,7 +24,7 @@ namespace ClothesWeb.Controllers
                     .ThenInclude(si => si.Product)
                 .Include(r => r.SellItem)
                     .ThenInclude(si => si.Size)
-                .Include(r => r.Status)
+                .Include(r => r.Status).OrderByDescending(r => r.Date)
                 .ToList();
 
             var userIds = returns.Select(r => r.EmployeeId).Distinct().ToList();
