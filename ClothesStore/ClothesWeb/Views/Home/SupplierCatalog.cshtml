@@ -47,7 +47,19 @@
                             @if (User.IsInRole("Manager"))
                             {
                             <a asp-controller="Home" asp-action="EditSupplierCard" asp-route-id="@item.Id"
-                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a> 
+                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
+
+                                <form asp-controller="Home"
+                                      asp-action="DeleteSupplier"
+                                      method="post">
+
+                                    <input type="hidden" name="id" value="@item.Id" />
+									<input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
+                                    <button type="submit" class="btn btn-sm btn-danger">
+                                        Удалить
+                                    </button>
+                                </form>
                             }
 
                         </div>

@@ -22,7 +22,7 @@ namespace ClothesWeb.Controllers
         [HttpGet]
         public IActionResult SupplierCatalog(string searchString)
         {
-            var suppliers = _context.Supplier.AsQueryable();
+            var suppliers = _context.Supplier.Where(p => p.IsDeleted == false).AsQueryable();
 
             if (!string.IsNullOrEmpty(searchString))
             {
@@ -239,6 +239,41 @@ namespace ClothesWeb.Controllers
             
         }
             return RedirectToAction("Catalog", new { searchString = searchString }); ;
+
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
+        public IActionResult DeleteSupplier(int Id, string? searchString)
+        {
+
+            ViewBag.SearchString = searchString;
+            var supplierToUpdate = _context.Supplier.FirstOrDefault(p => p.Id == Id);
+
+
+            if (supplierToUpdate == null)
+            {
+                return NotFound();
+            }
+
+
+            supplierToUpdate.IsDeleted = true;
+
+
+
+            try
+            {
+                _context.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Ошибка удаления: " + ex.Message);
+                return RedirectToAction("SupplierCatalog", new { searchString = searchString });
+
+            }
+            return RedirectToAction("SupplierCatalog", new { searchString = searchString }); ;
 
 
         }
