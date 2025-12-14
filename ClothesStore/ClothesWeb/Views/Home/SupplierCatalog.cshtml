@@ -56,7 +56,7 @@
                                     <input type="hidden" name="id" value="@item.Id" />
 									<input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
 
-                                    <button type="submit" class="btn btn-sm btn-danger">
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены, что хотите удалить поставщика @item.OrganizationName?');">
                                         Удалить
                                     </button>
                                 </form>

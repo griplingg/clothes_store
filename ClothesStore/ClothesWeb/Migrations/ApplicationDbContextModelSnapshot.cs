@@ -74,9 +74,6 @@ namespace ClothesWeb.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Sizes")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int>("SupplierId")
                         .HasColumnType("int");
 

@@ -124,7 +124,7 @@ namespace ClothesWeb.Controllers
             if (string.IsNullOrEmpty(userId))
                 return RedirectToAction("Manage");
 
-            // Запрет удаления самого себя
+ 
             if (userId == _userManager.GetUserId(User))
             {
                 TempData["Error"] = "Вы не можете удалить собственного пользователя.";

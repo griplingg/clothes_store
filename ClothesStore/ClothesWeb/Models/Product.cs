@@ -14,7 +14,7 @@ namespace ClothesWeb.Models
         public decimal Price { get; set; }
         public string Color { get; set; }
        
-        public string? Sizes { get; set; }
+        
 
         public string ArticleNumber { get; set; }
 

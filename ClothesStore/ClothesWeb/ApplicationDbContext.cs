@@ -12,8 +12,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
     {
     }
 
-
-
     public DbSet<Product> Products { get; set; }
     public DbSet<Size> Sizes { get; set; }
     public DbSet<Supplier> Supplier { get; set; }
@@ -96,8 +94,6 @@ public class ApplicationDbContext : IdentityDbContext<IdentityUser>
             .WithMany(s => s.Returns)         
             .HasForeignKey(r => r.SellItemId) 
             .OnDelete(DeleteBehavior.Restrict);
-
-
    
 
     }

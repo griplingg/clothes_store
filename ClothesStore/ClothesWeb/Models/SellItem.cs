@@ -11,6 +11,7 @@
 
         public int SellId { get; set; }
 
+
         public Sell Sell { get; set; }
         public Product Product { get; set; }
         public Size Size { get; set; }

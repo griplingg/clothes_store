@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "qcVNGuZ8XfDyGjAwqysE2kQ9VIV7Rc9xMtLfCMhU1rE=",
+  "Hash": "v/+UF/FBuleyqotV9Brh6BNKMVmouVutkFRuAHoz4QQ=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1464,6 +1464,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\74f296b7-653a-45bd-88a2-dbda489dd81c.png"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\c740f786-56a9-4901-b43f-7cf7b2998590.png",
+      "SourceId": "ClothesWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
+      "BasePath": "_content/ClothesWeb",
+      "RelativePath": "images/products/c740f786-56a9-4901-b43f-7cf7b2998590#[.{fingerprint}]?.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "1yhwkrvos8",
+      "Integrity": "Jw3kTKPI+k+YmK70Yb3QKteNS7AIuCAtp5LgK2qkQyU=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\c740f786-56a9-4901-b43f-7cf7b2998590.png"
     },
     {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\fe83b64b-1039-4008-ba1f-d48fdbaef40e.png",
@@ -5661,6 +5682,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-bim/UstHKs5/sqvYPtZZnAx7feyJwYTV2Wig840m5gs="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/c740f786-56a9-4901-b43f-7cf7b2998590.1yhwkrvos8.png",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\c740f786-56a9-4901-b43f-7cf7b2998590.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1038201"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jw3kTKPI+k+YmK70Yb3QKteNS7AIuCAtp5LgK2qkQyU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 14 Dec 2025 11:25:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "1yhwkrvos8"
+        },
+        {
+          "Name": "label",
+          "Value": "images/products/c740f786-56a9-4901-b43f-7cf7b2998590.png"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jw3kTKPI+k+YmK70Yb3QKteNS7AIuCAtp5LgK2qkQyU="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/c740f786-56a9-4901-b43f-7cf7b2998590.png",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\c740f786-56a9-4901-b43f-7cf7b2998590.png",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1038201"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/png"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"Jw3kTKPI+k+YmK70Yb3QKteNS7AIuCAtp5LgK2qkQyU=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 14 Dec 2025 11:25:31 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-Jw3kTKPI+k+YmK70Yb3QKteNS7AIuCAtp5LgK2qkQyU="
         }
       ]
     },

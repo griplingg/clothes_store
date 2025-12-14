@@ -5,6 +5,7 @@ wwwroot\css\StyleIndex.css
 wwwroot\css\Universal.css
 wwwroot\favicon.ico
 wwwroot\images\products\74f296b7-653a-45bd-88a2-dbda489dd81c.png
+wwwroot\images\products\c740f786-56a9-4901-b43f-7cf7b2998590.png
 wwwroot\images\products\fe83b64b-1039-4008-ba1f-d48fdbaef40e.png
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
