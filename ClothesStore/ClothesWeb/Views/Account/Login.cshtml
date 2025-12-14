@@ -1,0 +1,31 @@
+﻿@{
+    Layout = null;
+}
+
+
+@model LoginViewModel
+<head>
+    <link rel="stylesheet" href="~/css/Login.css" />
+</head>
+<div class="login-container">
+<h2>Вход</h2>
+
+<form asp-action="Login" method="post">
+    <div>
+        <label>Email</label>
+        <input asp-for="Email" />
+        <span asp-validation-for="Email"></span>
+    </div>
+
+    <div>
+        <label>Пароль</label>
+        <input asp-for="Password" type="password" />
+        <span asp-validation-for="Password"></span>
+    </div>
+
+
+    <button type="submit">Войти</button>
+
+    <div asp-validation-summary="All"></div>
+</form>
+</div>

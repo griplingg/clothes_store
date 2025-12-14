@@ -1,0 +1,143 @@
+﻿@model IEnumerable<ClothesWeb.Models.CategoryProductsViewModel>
+
+
+@{
+    ViewData["Title"] = "Каталог";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+</head>
+<body>
+    @if (User.IsInRole("Manager"))
+    {
+        <form asp-controller="Home" asp-action="Create" method="get">
+            <button type="submit" class="btn btn-primary mb-3">Добавить новый товар</button>
+        </form>
+        <br>
+
+        <button id="showCategoryForm" class="btn btn-primary mb-3">Добавить категорию</button>
+    }
+
+    
+
+    <div id="categoryFormContainer" style="display: none; margin-bottom: 20px;">
+        <form asp-controller="Home" asp-action="AddCategory" method="post" class="form-inline">
+            <input type="text" name="Name" class="form-control me-2" placeholder="Название категории" required />
+
+            <input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
+            <button type="submit" class="btn btn-success">Сохранить</button>
+            <button type="button" id="cancelCategoryForm" class="btn btn-secondary">Отмена</button>
+        </form>
+    </div>
+
+    <div class="container mt-4">
+        <h1 class="text-center mb-4">Каталог</h1>
+
+
+        <form asp-controller="Home" asp-action="Catalog" method="get">
+            <input type="text" name="searchString" class="form-control w-50 me-2 mb-3" placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </form>
+
+
+        <div class="row">
+            @if (!Model.Any())
+            {
+                <p>Товары не найдены.</p>
+            }
+            else
+            {
+                @foreach (var categoryGroup in Model)
+                {
+                    <h2 class="mt-5">@categoryGroup.Category.Name</h2>
+                    <hr />
+
+                    <div class="row">
+                        @foreach (var item in categoryGroup.Products)
+                        {
+                            <div class="col-md-4 mb-4">
+                                <div class="card shadow-sm h-100">
+
+                                    @if (!string.IsNullOrEmpty(item.ImagePath))
+                                    {
+                                        <img src="@item.ImagePath"
+                                             alt="@item.Name"
+                                             class="card-img-top mb-2"
+                                             style="height: 200px; object-fit: cover;" />
+                                    }
+                                    else
+                                    {
+                                        <img src="/images/no-image.png"
+                                             alt="Нет изображения"
+                                             class="card-img-top mb-2"
+                                             style="height: 200px; object-fit: cover;" />
+                                    }
+                                    <div class="card-body text-center">
+
+                                        <h5 class="card-title">@item.Name</h5>
+
+                                        <p>Цена: @item.Price.ToString("C")</p>
+                                        <p><small>Цвет: @item.Color</small></p>
+                                        <p><small>Артикул: @item.ArticleNumber</small></p>
+
+                                        <p>
+                                            <small>
+                                                Размеры:
+                                                @if (item.ProductSizes != null && item.ProductSizes.Any())
+                                                {
+                                                    @(string.Join(", ",
+                                                            item.ProductSizes.Select(ps =>
+                                                                $"{ps.Size.Name} ({ps.Quantity})"
+                                                            )))
+                                                }
+                                                else
+                                                {
+                                                    <span>нет в наличии</span>
+                                                }
+                                            </small>
+                                        </p>
+                                        @if (User.IsInRole("Manager"))
+                                        {
+                                            <a asp-controller="Home" asp-action="EditCard" asp-route-id="@item.Id"
+                                            asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
+
+                                            <form asp-controller="Home"
+                                            asp-action="DeleteCard"
+                                            method="post">
+
+                                                <input type="hidden" name="id" value="@item.Id" />
+                                                <input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
+                                                <button type="submit" class="btn btn-sm btn-danger" 
+                                                    onclick="return confirm('Вы уверены, что хотите снять товар @item.Name с продажи?');">
+                                                    Снять с продажи
+                                                </button>
+                                            </form>
+
+                                            <a asp-controller="Home" asp-action="Supply" asp-route-id="@item.Id" class="btn btn-warning">
+                                                Поставка
+                                            </a>
+                                        }
+                                    </div>
+                    </div>
+                </div>
+            }
+            </div>
+        
+}
+}
+</body>
+        <script>
+            document.getElementById("showCategoryForm").addEventListener("click", function () {
+                document.getElementById("categoryFormContainer").style.display = "block";
+                this.style.display = "none"; 
+            });
+
+            document.getElementById("cancelCategoryForm").addEventListener("click", function () {
+                document.getElementById("categoryFormContainer").style.display = "none";
+                document.getElementById("showCategoryForm").style.display = "inline-block";
+            });
+        </script>
+

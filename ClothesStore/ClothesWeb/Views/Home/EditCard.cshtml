@@ -1,0 +1,88 @@
+﻿@model ClothesWeb.Models.Product
+
+@{
+    ViewData["Title"] = "Редактирование товара";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+<div>
+    <h2 class="text-center">Редактирование карточки товара</h2>
+
+    <form asp-controller="Home" asp-action="EditCard" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
+        <input type="hidden" asp-for="ArticleNumber" />
+        <input type="hidden" asp-for="IsDeleted" />
+
+        <div asp-validation-summary="All"></div>
+
+        <div class="mb-3">
+            <label asp-for="Name">Название</label>
+            <input asp-for="Name"  />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Price">Цена</label>
+            <input asp-for="Price"/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Color">Цвет</label>
+            <input asp-for="Color"/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="CategoryId" class="form-label">Категория</label>
+            <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
+                <option value="">-- Выберите категорию --</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="SupplierId" class="form-label">поставщик</label>
+            <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Suppliers">
+                <option value="">-- Выберите категорию --</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label>Изображение</label>
+            <input type="file" name="imageFile" class="form-control"
+                   accept="image/*" />
+        </div>
+
+
+        <p>
+            <small>
+                Размеры:
+                @if (Model.ProductSizes != null && Model.ProductSizes.Any())
+                {
+
+                    @(string.Join(", ", Model.ProductSizes.Select(ps =>
+                        $"{ps.Size.Name} ({ps.Quantity})"
+                        )))
+                }
+                else
+                {
+                    <span>нет в наличии</span>
+                }
+            </small>
+        </p>
+
+
+        <button type="submit"> Сохранить изменения</button>
+        
+       
+        
+        @if (!string.IsNullOrEmpty(ViewBag.SearchString))
+        {
+            <a asp-action="Catalog" asp-route-searchString="@ViewBag.SearchString"> Назад</a>
+        }
+        else
+        {
+            <a asp-action="Catalog">Назад</a>
+        }
+    </form>
+</div>

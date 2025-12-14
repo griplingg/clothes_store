@@ -1,0 +1,43 @@
+﻿@model ClothesWeb.Models.Supplier
+
+@{
+    ViewData["Title"] = "Добавить поставщика";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+
+<h2>Добавление поставщика</h2>
+
+<form asp-action="AddSupplier" method="post">
+    @Html.AntiForgeryToken()
+
+    <div class="mb-3">
+        <label asp-for="ContactName">контактное лицо</label>
+        <input asp-for="ContactName" class="form-control"/>
+        <span asp-validation-for="ContactName"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ContactMail">почта</label>
+        <input asp-for="ContactMail" class="form-control" step="0.01" />
+        <span asp-validation-for="ContactMail"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="OrganizationName"> название организации</label>
+        <input asp-for="OrganizationName" class="form-control"/>
+        <span asp-validation-for="OrganizationName"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="ContactPhone">телефон</label>
+        <input asp-for="ContactPhone" class="form-control"/>
+        <span asp-validation-for="ContactPhone"></span>
+    </div>
+
+   
+
+    <button type="submit" class="btn btn-primary">Добавить поставщика</button>
+</form>

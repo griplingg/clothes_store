@@ -1,0 +1,36 @@
+﻿@model ClothesWeb.Models.Product
+
+@{
+    ViewData["Title"] = "Поставка товара";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+<h2>Поставка: @Model.Name</h2>
+
+<form method="post" asp-action="Supply">
+    <input type="hidden" name="productId" value="@Model.Id" />
+
+    <div class="mb-3">
+        <label>Размер</label>
+        <select class="form-control" name="sizeId">
+            @foreach (var size in ViewBag.Sizes)
+            {
+                <option value="@size.Id">@size.Name</option>
+            }
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Количество</label>
+        <input type="number" class="form-control" name="quantity" min="1" required />
+    </div>
+
+    <button class="btn btn-success" type="submit">Добавить поставку</button>
+
+    <a asp-action="EditCard" asp-route-id="@Model.Id" class="btn btn-secondary">
+        Назад
+    </a>
+</form>

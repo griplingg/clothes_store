@@ -1,0 +1,101 @@
+﻿@{
+    ViewData["Title"] = "Статистика продаж";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+
+<h1 class="mb-4">Статистика продаж</h1>
+<form asp-action="Statistics" method="post">
+    <input type="hidden" name="ClientDate" id="clientDate" />
+    <div class="mb-3">
+        <label for="startDate">Дата начала:</label>
+        <input type="date" name="startDate" class="form-control" value="@ViewBag.StartDate" required />
+    </div>
+    <div class="mb-3">
+        <label for="endDate">Дата конца:</label>
+        <input type="date" name="endDate" class="form-control" value="@ViewBag.EndDate" required />
+    <div class="mb-3">
+    <label for="employeeId">Сотрудник (необязательно)</label>
+            <select name="employeeId" id="employeeId" class="form-control">
+                <option value="">Отчет по всем сотрудникам</option>
+
+                @foreach (var emp in ViewBag.Employee as List<SelectListItem>)
+                {
+                    var selectedId = ViewBag.SelectedEmployeeId as string;
+                    var isSelected = emp.Value == selectedId;
+                    <option value="@emp.Value" selected="@isSelected">
+                        @emp.Text
+                    </option>
+                }
+            </select>
+</div>
+
+
+
+    <button type="submit" class="btn btn-primary">Показать статистику</button>
+</form>
+@if (ViewData["Error"] != null)
+{
+    <div class="text-danger">@ViewData["Error"]</div>
+}
+@if (ViewBag.TotalRevenue != null)
+{
+    <hr />
+    <h3>Оборот за период: <strong>@ViewBag.TotalRevenue.ToString("C")</strong></h3>
+
+            @foreach (var sell in ViewBag.Sales as List<ClothesWeb.Models.Sell>)
+            { 
+                <div class="card mb-3">
+            <div class="card-header bg-light">
+                <strong>Покупка № @sell.Id</strong><br />
+                <small>Дата: @sell.Date.ToString("yyyy-MM-dd")</small>
+            </div>
+            <div class="card-body p-0">
+                <table class="table table-sm table-bordered m-0">
+                    <thead>
+                        <tr>
+                            <th>Дата</th>
+                            <th>Товар</th>
+                            <th>Количество</th>
+                            <th>Цена</th>
+                            <th>Сумма</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                @foreach (var item in sell.SellItem)
+                {
+                    <tr>
+                        <td>@sell.Date.ToString("yyyy-MM-dd")</td>
+                        <td>@item.Product.Name</td>
+                        <td>@item.Quantity</td>
+                        <td>@item.Price.ToString("C")</td>
+                        @{
+                            var total = item.Price * item.Quantity;
+                        }
+                        <td>@total.ToString("C")</td>
+                    </tr>
+          
+            }
+        </tbody>
+    </table>
+            </div>
+        </div>
+    }
+}
+@if (ViewBag.FileName != null)
+{
+    <a href="@Url.Action("DownloadStatistics", "Reports", new { fileName = ViewBag.FileName })" class="btn btn-primary">Скачать файл</a>
+}
+
+<script>
+    function getLocalIsoDate(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+    document.getElementById('clientDate').value =
+        getLocalIsoDate(new Date());
+</script>

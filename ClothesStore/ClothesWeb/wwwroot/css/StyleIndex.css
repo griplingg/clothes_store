@@ -1,0 +1,46 @@
+﻿html{
+    color: darkgrey;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.menu-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 15px;
+    color: #edede9;
+}
+
+
+    .menu-list > li {
+        background-color: #f4f4f4;
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 8px;
+        text-align: center;
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+        height: 100%;
+        
+    }
+
+    .menu-list a {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px;
+        text-decoration: none;
+        color: #000000;
+        height: 100%;
+        text-align: center;
+    }
+
+        .menu-list > li:hover {
+            background-color: #d6ccc2;
+            transform: translateY(-2px);
+            transition: all 0.2s ease;
+        }
+}

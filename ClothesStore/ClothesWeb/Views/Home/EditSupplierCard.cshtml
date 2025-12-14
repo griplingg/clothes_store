@@ -1,0 +1,52 @@
+﻿@model ClothesWeb.Models.Supplier
+
+@{
+    ViewData["Title"] = "Редактирование карточки поставщика";
+}
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+<div>
+    <h2 class="text-center">Редактирование карточки поставщика</h2>
+
+    <form asp-controller="Home" asp-action="EditSupplierCard" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="searchString" value="@ViewBag.SearchString" />
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="ContactName">Контактное лицо</label>
+            <input asp-for="ContactName"  />
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="ContactMail">email</label>
+            <input asp-for="ContactMail"/>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="OrganizationName">Название организации</label>
+            <input asp-for="OrganizationName"/>
+        </div>
+
+
+        <div>
+            <label asp-for="ContactPhone">контактный телефон</label>
+            <input asp-for="ContactPhone"/>
+        </div>
+
+        <button type="submit"> Сохранить изменения</button>
+        
+       
+        
+        @if (!string.IsNullOrEmpty(ViewBag.SearchString))
+        {
+            <a asp-action="SupplierCatalog" asp-route-searchString="@ViewBag.SearchString"> Назад</a>
+        }
+        else
+        {
+            <a asp-action="SupplierCatalog">Назад</a>
+        }
+    </form>
+</div>

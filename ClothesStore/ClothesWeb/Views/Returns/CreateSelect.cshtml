@@ -1,0 +1,139 @@
+﻿@* @model IEnumerable<ReturnSelectViewModel>*@
+@*@model IEnumerable<ClothesWeb.Models.SellWithItemsForReturnViewModel>
+
+<h2>Выбор товара для возврата</h2>
+
+@<table class="table">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Размер</th>
+            <th>Доступно к возврату</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>@item.SizeName</td>
+                <td>@item.AvailableCount</td>
+                <td>
+                    <a asp-action="Create"
+                       asp-route-sellItemId="@item.SellItemId"
+                       class="btn btn-warning btn-sm">
+                        Выбрать
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@foreach (var sell in Model)
+{
+    <div class="card mb-4">
+        <div class="card-header bg-light">
+            <strong>Покупка № @sell.SellId</strong><br />
+            <small>Дата покупки: @sell.SellDate.ToShortDateString()</small>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Размер</th>
+                        <th>Доступно к возврату</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in sell.Items)
+                    {
+                        <tr>
+                            <td>@item.ProductName</td>
+                            <td>@item.SizeName</td>
+                            <td>@item.AvailableForReturn</td>
+                            <td>
+                                <a asp-action="Create"
+                                   asp-route-sellItemId="@item.SellItemId"
+                                   class="btn btn-warning btn-sm">
+                                    Оформить возврат
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}*@
+@model IEnumerable<ClothesWeb.Models.Sell>
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+<h2>Выбор товара для возврата</h2>
+
+<form method="get" class="mb-4">
+    <div class="input-group">
+        <input type="text"
+               name="searchString"
+               class="form-control"
+               placeholder="Поиск по названию товара"
+               value="@ViewBag.SearchString" />
+        <button class="btn btn-primary" type="submit">
+            Найти
+        </button>
+    </div>
+</form>
+
+@foreach (var sell in Model)
+{
+    var itemsToReturn = sell.SellItem
+        .Where(si => si.Quantity > si.Returns.Count)
+        .ToList();
+
+    if (!itemsToReturn.Any())
+    {
+        continue; 
+    }
+
+    <div class="card mb-4">
+        <div class="card-header bg-light">
+            <strong>Покупка № @sell.Id</strong><br />
+            <small>Дата покупки: @sell.Date.ToShortDateString()</small>
+        </div>
+
+        <div class="card-body">
+            <table class="table table-sm">
+                <thead>
+                    <tr>
+                        <th>Товар</th>
+                        <th>Размер</th>
+                        <th>Доступно к возврату</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in itemsToReturn)
+                    {
+                        <tr>
+                            <td>@item.Product.Name</td>
+                            <td>@item.Size.Name</td>
+                            <td>@(item.Quantity - item.Returns.Count)</td>
+                            <td>
+                                <a asp-action="Create"
+                                   asp-route-sellItemId="@item.Id"
+                                   class="btn btn-warning btn-sm">
+                                    Оформить возврат
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}

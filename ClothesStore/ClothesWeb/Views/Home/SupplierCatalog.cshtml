@@ -1,0 +1,88 @@
+﻿@model IEnumerable<ClothesWeb.Models.Supplier>
+
+@{
+    ViewData["Title"] = "Каталог поставщиков";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+
+ @if (User.IsInRole("Manager"))
+    {
+<form asp-controller="Home" asp-action="AddSupplier" method="get">
+    <button type="submit">Добавить нового поставщика</button>
+</form>
+    }
+
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Каталог</h1>
+
+
+    <form asp-controller="Home" asp-action="SupplierCatalog" method="get">
+        <input type="text" name="searchString" class="form-control w-50 me-2 mb-3" placeholder="Введите поставщика" value="@Context.Request.Query["searchString"]" />
+        <button  class="mb-3"type="submit">Поиск</button>
+  
+    </form>
+
+
+    <div class="row">
+        @if (!Model.Any())
+        {
+            <p>Поставщики не найдены</p>
+        }
+        else
+        {
+            @foreach (var item in Model)
+            {
+                <div class="col-md-4 mb-4">
+                    <div class="card shadow-sm h-100">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">@item.OrganizationName</h5>
+                            <p>email: @item.ContactMail</p>
+                            <p><small>Контактное лицо: @item.ContactName</small></p>
+                            <p><small>Контактный телефон: @item.ContactPhone</small></p>
+
+                            @if (User.IsInRole("Manager"))
+                            {
+                            <a asp-controller="Home" asp-action="EditSupplierCard" asp-route-id="@item.Id"
+                               asp-route-searchString="@Context.Request.Query["searchString"]">Редактировать</a>
+
+                                <form asp-controller="Home"
+                                      asp-action="DeleteSupplier"
+                                      method="post">
+
+                                    <input type="hidden" name="id" value="@item.Id" />
+									<input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Вы уверены, что хотите удалить поставщика @item.OrganizationName?');">
+                                        Удалить
+                                    </button>
+                                </form>
+                            }
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+
+
+<style>
+    .card {
+        border-radius: 16px;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.15);
+        }
+
+    h1 {
+        font-weight: 600;
+        letter-spacing: 1px;
+    }
+</style>

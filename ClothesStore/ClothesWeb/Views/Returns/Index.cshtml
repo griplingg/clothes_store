@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ClothesWeb.Models.ReturnProduct>
+@{
+    var emails = ViewBag.EmployeeEmails as Dictionary<string, string>;
+    string employeeEmail;
+}
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+
+<h2>Возвраты</h2>
+
+<a asp-action="CreateSelect" class="btn btn-primary mb-3">
+    Добавить возврат
+</a>
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Товар</th>
+            <th>Размер</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Причина</th>
+            <th>Сотрудник</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.SellItem.Product.Name</td>
+                <td>@r.SellItem.Size.Name</td>
+                <td>@r.Date.ToShortDateString()</td>
+                <td>@r.Status.Name</td>
+                <td>@r.Reason</td>
+                <td>
+                    @if (emails != null && emails.TryGetValue(r.EmployeeId, out employeeEmail))
+                    {
+                        @employeeEmail
+                    }
+                    else
+                    {
+                        <span>Удаленный сотрудник</span>
+                    }
+                </td>
+               
+
+                <td>
+                    @if (User.IsInRole("Manager") && r.StatusId == 1)
+                    {
+                        <a asp-action="ChangeStatus" asp-route-id="@r.Id" asp-route-actionType="approve"
+                           class="btn btn-sm btn-success">
+                            Одобрить
+                        </a>
+                        <a asp-action="ChangeStatus" asp-route-id="@r.Id" asp-route-actionType="reject"
+                           class="btn btn-sm btn-danger">
+                            Отклонить
+                        </a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

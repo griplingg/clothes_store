@@ -1,0 +1,99 @@
+﻿@{
+    ViewBag.Title = "Управление  пользователями";
+    var usersRoles = ViewBag.UsersRoles;
+    var roles = ViewBag.AllRoles; 
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/Universal.css" />
+
+</head>
+<h2>Управление пользователями</h2>
+
+<h3>Создать пользователя</h3>
+
+<form asp-action="CreateUser" method="post" class="mb-3">
+    @Html.AntiForgeryToken()
+
+    <input type="email" name="Email" placeholder="Email" required />
+    <input type="password" name="Password" placeholder="Пароль" required />
+
+    <button type="submit">Создать</button>
+</form>
+
+@if (TempData["Error"] != null)
+{
+    <div style="color:red">@TempData["Error"]</div>
+}
+
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Имя пользователя</th>
+            <th>Роли</th>
+            <th>Добавить в роль</th>
+            <th>Удалить из роли</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var userRole in usersRoles)
+        {
+            <tr>
+                <td>@userRole.User.UserName</td>
+                <td>
+                    @foreach (var roleName in userRole.RoleNames)
+                    {
+                        <span>@roleName </span>
+                    }
+                </td>
+                <td>
+                    <form asp-action="AddUserToRole" method="post" onsubmit="return confirm('Вы уверены, что хотите добавить роль пользователю @userRole.User.UserName ?');">
+                        <input type="hidden" name="userId" value="@userRole.User.Id" />
+                        <select name="roleName">
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary">Добавить</button>
+                    </form>
+                </td>
+                <td>
+                    <form asp-action="RemoveUserFromRole" method="post" onsubmit="return confirm('Вы уверены, что хотите удалить пользователя из роли @userRole.User.UserName ?
+                    
+);">
+                
+                        <input type="hidden" name="userId" value="@userRole.User.Id" />
+                        <select name="roleName">
+                            @foreach (var role in roles)
+                            {
+                                <option value="@role.Name">@role.Name</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary" >Удалить</button>
+                    </form>
+				</td>
+				<td>
+					<form asp-action="DeleteUser"
+						  method="post"
+						  onsubmit="return confirm('Вы уверены, что хотите удалить пользователя @userRole.User.UserName ?');">
+						@Html.AntiForgeryToken()
+
+						<input type="hidden" name="userId" value="@userRole.User.Id" />
+
+						<button type="submit" class="btn btn-danger btn-sm">
+							Удалить
+						</button>
+					</form>
+				</td>
+            </tr>
+       
+        
+        }
+    </tbody>
+</table>
+
+<hr />
+
