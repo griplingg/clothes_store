@@ -185,8 +185,9 @@
     var successMessage = TempData["SuccessMessage"] as string;
 }
 
+
 <div id="success-popup" style="display:none;">
-    @TempData["SuccessMessage"]
+    @successMessage
 </div>
 @section Scripts {
    <!-- <script>

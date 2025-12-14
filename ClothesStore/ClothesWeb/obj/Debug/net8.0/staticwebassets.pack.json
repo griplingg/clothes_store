@@ -29,6 +29,14 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg",
+      "PackagePath": "staticwebassets\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg"
+    },
+    {
       "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\74f296b7-653a-45bd-88a2-dbda489dd81c.png",
       "PackagePath": "staticwebassets\\images\\products\\74f296b7-653a-45bd-88a2-dbda489dd81c.png"
     },
@@ -37,8 +45,8 @@
       "PackagePath": "staticwebassets\\images\\products\\c740f786-56a9-4901-b43f-7cf7b2998590.png"
     },
     {
-      "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\fe83b64b-1039-4008-ba1f-d48fdbaef40e.png",
-      "PackagePath": "staticwebassets\\images\\products\\fe83b64b-1039-4008-ba1f-d48fdbaef40e.png"
+      "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\c7b3c633-9a3d-45fc-8eb2-ae7808c1479a.webp",
+      "PackagePath": "staticwebassets\\images\\products\\c7b3c633-9a3d-45fc-8eb2-ae7808c1479a.webp"
     },
     {
       "Id": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\js\\site.js",

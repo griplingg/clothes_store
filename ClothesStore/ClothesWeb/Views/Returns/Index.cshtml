@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<ClothesWeb.Models.ReturnProduct>
 @{
     var emails = ViewBag.EmployeeEmails as Dictionary<string, string>;
+    string employeeEmail;
 }
 <head>
     <link rel="stylesheet" href="~/css/Universal.css" />
@@ -35,7 +36,17 @@
                 <td>@r.Date.ToShortDateString()</td>
                 <td>@r.Status.Name</td>
                 <td>@r.Reason</td>
-                <td>@emails[r.EmployeeId]</td>
+                <td>
+                    @if (emails != null && emails.TryGetValue(r.EmployeeId, out employeeEmail))
+                    {
+                        @employeeEmail
+                    }
+                    else
+                    {
+                        <span>Удаленный сотрудник</span>
+                    }
+                </td>
+               
 
                 <td>
                     @if (User.IsInRole("Manager") && r.StatusId == 1)
