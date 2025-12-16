@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "YQ4q5DXM2SX5X/i+20R9ri9fO21JrQyV1VHwIA+0mHs=",
+  "Hash": "3NPRkNeOyMtFO+N8jQ46t+oJyDvCC4aXrzLNg8XEFz0=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1445,6 +1445,27 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
+      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg",
+      "SourceId": "ClothesWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
+      "BasePath": "_content/ClothesWeb",
+      "RelativePath": "images/products/03122472-e874-43d6-9e5d-ceb0b23f0c48#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "l1wb2y6775",
+      "Integrity": "B18BTN3oKCH0nKy4iYnLxhmAd0enVWqFQn1zJP/2Ar8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg",
       "SourceId": "ClothesWeb",
       "SourceType": "Discovered",
@@ -1464,6 +1485,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\598f6b73-2403-410c-9bdf-fe8f585f0764.jpg",
+      "SourceId": "ClothesWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
+      "BasePath": "_content/ClothesWeb",
+      "RelativePath": "images/products/598f6b73-2403-410c-9bdf-fe8f585f0764#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "a2fytest4z",
+      "Integrity": "PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\598f6b73-2403-410c-9bdf-fe8f585f0764.jpg"
     },
     {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg",
@@ -5646,6 +5688,88 @@
       ]
     },
     {
+      "Route": "images/products/03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "178641"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B18BTN3oKCH0nKy4iYnLxhmAd0enVWqFQn1zJP/2Ar8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 16 Dec 2025 20:57:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-B18BTN3oKCH0nKy4iYnLxhmAd0enVWqFQn1zJP/2Ar8="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/03122472-e874-43d6-9e5d-ceb0b23f0c48.l1wb2y6775.jpg",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "178641"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"B18BTN3oKCH0nKy4iYnLxhmAd0enVWqFQn1zJP/2Ar8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 16 Dec 2025 20:57:57 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "l1wb2y6775"
+        },
+        {
+          "Name": "label",
+          "Value": "images/products/03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-B18BTN3oKCH0nKy4iYnLxhmAd0enVWqFQn1zJP/2Ar8="
+        }
+      ]
+    },
+    {
       "Route": "images/products/521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg",
       "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg",
       "Selectors": [],
@@ -5724,6 +5848,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-B18BTN3oKCH0nKy4iYnLxhmAd0enVWqFQn1zJP/2Ar8="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/598f6b73-2403-410c-9bdf-fe8f585f0764.a2fytest4z.jpg",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\598f6b73-2403-410c-9bdf-fe8f585f0764.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 16 Dec 2025 21:02:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "a2fytest4z"
+        },
+        {
+          "Name": "label",
+          "Value": "images/products/598f6b73-2403-410c-9bdf-fe8f585f0764.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/598f6b73-2403-410c-9bdf-fe8f585f0764.jpg",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\598f6b73-2403-410c-9bdf-fe8f585f0764.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 16 Dec 2025 21:02:42 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI="
         }
       ]
     },

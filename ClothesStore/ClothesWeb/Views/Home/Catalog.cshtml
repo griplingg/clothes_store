@@ -9,6 +9,15 @@
     <link rel="stylesheet" href="~/css/Universal.css" />
 </head>
 <body>
+    @{
+        var successMessage = TempData["SuccessMessage"] as string;
+    }
+
+
+    <div id="success-popup" style="display:none;">
+        @successMessage
+    </div>
+        
     @if (User.IsInRole("Manager"))
     {
         <form asp-controller="Home" asp-action="Create" method="get">
@@ -139,5 +148,21 @@
                 document.getElementById("categoryFormContainer").style.display = "none";
                 document.getElementById("showCategoryForm").style.display = "inline-block";
             });
+
+        
+    window.addEventListener('DOMContentLoaded', (event) => {
+        var popup = document.getElementById('success-popup');
+        if (popup && popup.innerText.trim() !== "") {
+            var div = document.createElement('div');
+            div.innerText = popup.innerText;
+            div.className = 'popup-success';
+            document.body.appendChild(div);
+
+            setTimeout(() => {
+                div.style.opacity = '0';
+                setTimeout(() => div.remove(), 500);
+            }, 3000);
+        }
+    });
         </script>
 
