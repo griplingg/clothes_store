@@ -4,7 +4,9 @@ wwwroot\css\site.css
 wwwroot\css\StyleIndex.css
 wwwroot\css\Universal.css
 wwwroot\favicon.ico
+wwwroot\images\products\03122472-e874-43d6-9e5d-ceb0b23f0c48.jpg
 wwwroot\images\products\521e4468-9d4d-4c48-a4d0-a3c1bc91fb66.jpg
+wwwroot\images\products\598f6b73-2403-410c-9bdf-fe8f585f0764.jpg
 wwwroot\images\products\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg
 wwwroot\images\products\74f296b7-653a-45bd-88a2-dbda489dd81c.png
 wwwroot\images\products\c740f786-56a9-4901-b43f-7cf7b2998590.png

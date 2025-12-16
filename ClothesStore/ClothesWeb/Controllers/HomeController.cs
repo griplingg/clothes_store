@@ -327,6 +327,7 @@ namespace ClothesWeb.Controllers
 
 
         [HttpGet]
+        [Authorize(Roles = "Manager")]
         public IActionResult Create()
         {
             ViewBag.Supplier = _context.Supplier.Select(s => new SelectListItem
@@ -346,6 +347,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager")]
         public async Task<IActionResult>  Create(Product product, int[] sizeIds, int[] quantities, IFormFile imageFile)
         { 
             if (!ModelState.IsValid)
@@ -425,6 +427,7 @@ namespace ClothesWeb.Controllers
                 }
                 _context.SaveChanges();
             }
+            TempData["SuccessMessage"] = "Товар успешно добавлен в каталог!";
             return RedirectToAction("Catalog");
         }
         [HttpGet]

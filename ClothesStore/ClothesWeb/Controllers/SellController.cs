@@ -122,7 +122,7 @@ public class SellController : Controller
             EmployeeId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value
         };
         _context.Sells.Add(newSell);
-        await _context.SaveChangesAsync(); // <- Здесь присваивается Id
+        await _context.SaveChangesAsync(); 
 
         foreach (var itemVm in model.Items)
         {
@@ -153,6 +153,7 @@ public class SellController : Controller
         }
 
         await _context.SaveChangesAsync();
+        TempData["SuccessMessage"] = "Продажа проведена успешно";
         return RedirectToAction("AddPurchase");
     }
 
