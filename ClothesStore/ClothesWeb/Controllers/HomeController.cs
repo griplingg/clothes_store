@@ -432,7 +432,7 @@ namespace ClothesWeb.Controllers
         }
         [HttpGet]
         [Authorize(Roles = "Manager")]
-        public IActionResult Supply(int id)
+        public IActionResult Supply(int id, string? searchString)
         {
             var product = _context.Products.FirstOrDefault(p => p.Id == id);
             if (product == null) 
@@ -445,7 +445,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [Authorize(Roles = "Manager")]
-        public IActionResult Supply(int productId, int sizeId, int quantity)
+        public IActionResult Supply(int productId, int sizeId, int quantity, string? searchString)
         {
 
             var existing = _context.ProductSizes
@@ -468,7 +468,7 @@ namespace ClothesWeb.Controllers
             }
 
             _context.SaveChanges();
-            return RedirectToAction("EditCard", new { id = productId });
+            return RedirectToAction("Catalog", new { searchString });
         }
 
         [HttpPost]

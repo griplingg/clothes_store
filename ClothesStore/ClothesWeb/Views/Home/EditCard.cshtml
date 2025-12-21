@@ -37,14 +37,13 @@
         <div class="mb-3">
             <label asp-for="CategoryId" class="form-label">Категория</label>
             <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
-                <option value="">-- Выберите категорию --</option>
+            
             </select>
         </div>
 
         <div class="mb-3">
             <label asp-for="SupplierId" class="form-label">поставщик</label>
             <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Suppliers">
-                <option value="">-- Выберите категорию --</option>
             </select>
         </div>
         <div class="mb-3">
@@ -54,7 +53,7 @@
         </div>
 
 
-        <p>
+       <!-- <p>
             <small>
                 Размеры:
                 @if (Model.ProductSizes != null && Model.ProductSizes.Any())
@@ -69,7 +68,7 @@
                     <span>нет в наличии</span>
                 }
             </small>
-        </p>
+		 </p>-->
 
 
         <button type="submit"> Сохранить изменения</button>

@@ -46,7 +46,8 @@
 
 
         <form asp-controller="Home" asp-action="Catalog" method="get">
-            <input type="text" name="searchString" class="form-control w-50 me-2 mb-3" placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
+            <input type="text" name="searchString" class="form-control w-50 me-2 mb-3"
+            placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
             <button type="submit" class="btn btn-primary">Поиск</button>
         </form>
 
@@ -124,8 +125,8 @@
                                                     Снять с продажи
                                                 </button>
                                             </form>
-
-                                            <a asp-controller="Home" asp-action="Supply" asp-route-id="@item.Id" class="btn btn-warning">
+                                             
+                                            <a asp-controller="Home" asp-action="Supply" asp-route-id="@item.Id" asp-route-searchString="@Context.Request.Query["searchString"]" class="btn btn-warning">
                                                 Поставка
                                             </a>
                                         }

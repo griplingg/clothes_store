@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3NPRkNeOyMtFO+N8jQ46t+oJyDvCC4aXrzLNg8XEFz0=",
+  "Hash": "27E8/EZfiBNOjGKQavO7YCuGImCpyYyyuyP1NraveDM=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1508,27 +1508,6 @@
       "OriginalItemSpec": "wwwroot\\images\\products\\598f6b73-2403-410c-9bdf-fe8f585f0764.jpg"
     },
     {
-      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg",
-      "SourceId": "ClothesWeb",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
-      "BasePath": "_content/ClothesWeb",
-      "RelativePath": "images/products/5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "a2fytest4z",
-      "Integrity": "PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg"
-    },
-    {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\74f296b7-653a-45bd-88a2-dbda489dd81c.png",
       "SourceId": "ClothesWeb",
       "SourceType": "Discovered",
@@ -1590,6 +1569,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\images\\products\\c7b3c633-9a3d-45fc-8eb2-ae7808c1479a.webp"
+    },
+    {
+      "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.jpg",
+      "SourceId": "ClothesWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\",
+      "BasePath": "_content/ClothesWeb",
+      "RelativePath": "images/products/dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "a2fytest4z",
+      "Integrity": "PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\products\\dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.jpg"
     },
     {
       "Identity": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\js\\site.js",
@@ -2998,7 +2998,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 08 Dec 2025 06:26:25 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3035,7 +3035,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Mon, 08 Dec 2025 06:26:25 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3080,7 +3080,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 09 Dec 2025 17:21:57 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3125,7 +3125,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 09 Dec 2025 17:21:57 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3162,7 +3162,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 13 Dec 2025 20:40:59 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3199,7 +3199,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 13 Dec 2025 20:40:59 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3244,7 +3244,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Nov 2025 19:08:40 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3281,7 +3281,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 30 Nov 2025 19:08:40 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3326,7 +3326,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 13 Dec 2025 20:55:54 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3371,7 +3371,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 13 Dec 2025 20:55:54 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5710,7 +5710,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 16 Dec 2025 20:57:57 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5747,7 +5747,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 16 Dec 2025 20:57:57 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5792,7 +5792,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 19:36:33 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5829,7 +5829,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 19:36:33 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5874,7 +5874,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 16 Dec 2025 21:02:42 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -5919,89 +5919,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 16 Dec 2025 21:02:42 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI="
-        }
-      ]
-    },
-    {
-      "Route": "images/products/5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.a2fytest4z.jpg",
-      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "35650"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 19:35:34 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "a2fytest4z"
-        },
-        {
-          "Name": "label",
-          "Value": "images/products/5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI="
-        }
-      ]
-    },
-    {
-      "Route": "images/products/5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg",
-      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\5c6bf94b-3d6b-4d2f-bf52-6ebc0e52804a.jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "35650"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 19:35:34 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6038,7 +5956,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 13 Dec 2025 11:22:16 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6083,7 +6001,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sat, 13 Dec 2025 11:22:16 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6120,7 +6038,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 11:25:31 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6165,7 +6083,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 11:25:31 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6202,7 +6120,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 19:33:45 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6247,7 +6165,7 @@
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 14 Dec 2025 19:33:45 GMT"
+          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -6258,6 +6176,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-VDjpK1SgE9Hw7PmPluffExbDWa9D/jEBKz/qRzoTnjE="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.a2fytest4z.jpg",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 21 Dec 2025 17:13:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "a2fytest4z"
+        },
+        {
+          "Name": "label",
+          "Value": "images/products/dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI="
+        }
+      ]
+    },
+    {
+      "Route": "images/products/dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.jpg",
+      "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\images\\products\\dffc4cfd-fc42-4b5f-bd6b-832dec32ffb6.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "35650"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 21 Dec 2025 17:13:35 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-PkqYbnbKlhGiXaivCWwdZ1pDCnlDqZFhKSY35Inw5EI="
         }
       ]
     },

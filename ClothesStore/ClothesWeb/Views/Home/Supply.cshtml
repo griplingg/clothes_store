@@ -12,6 +12,8 @@
 
 <form method="post" asp-action="Supply">
     <input type="hidden" name="productId" value="@Model.Id" />
+    <input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
+
 
     <div class="mb-3">
         <label>Размер</label>
@@ -30,7 +32,7 @@
 
     <button class="btn btn-success" type="submit">Добавить поставку</button>
 
-    <a asp-action="EditCard" asp-route-id="@Model.Id" class="btn btn-secondary">
+    <a asp-action="Catalog" asp-route-searchString="@Context.Request.Query["searchString"]" asp-route-id="@Model.Id" class="btn btn-secondary">
         Назад
     </a>
 </form>
