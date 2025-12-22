@@ -14,37 +14,36 @@
     <div asp-validation-summary="All" class="text-danger"></div>
 
     <div class="mb-3">
-        <label asp-for="Name"></label>
+        <label asp-for="Name">Наименование</label>
         <input asp-for="Name" class="form-control"/>
         <span asp-validation-for="Name"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Price"></label>
+        <label asp-for="Price">Цена</label>
         <input asp-for="Price" class="form-control" step="0.01" />
         <span asp-validation-for="Price"></span>
     </div>
 
     <div class="mb-3">
-        <label asp-for="Color"></label>
+        <label asp-for="Color">Цвет</label>
         <input asp-for="Color" class="form-control"/>
     </div>
 
     <div class="mb-3">
-        <label asp-for="ArticleNumber">артикул</label>
+        <label asp-for="ArticleNumber">Артикул</label>
         <input asp-for="ArticleNumber" class="form-control"/>
     </div>
 
     <div class="mb-3">
-
+        <label asp-for="CategoryId">Категория</label>
         <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.Categories">
-            <option value="">-- Выберите категорию --</option>
         </select>
     </div>
     <div class="mb-3">
         <label asp-for="SupplierId">Поставщик</label>
         <select asp-for="SupplierId" class="form-control" asp-items="ViewBag.Supplier">
-            <option value="">-- Выберите поставщика --</option>
+
         </select>
 
         <span asp-validation-for="SupplierId"></span>

@@ -198,6 +198,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\74f296b7-653a-45bd-88a2-dbda489dd81c.png'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png'))">
+      <SourceType>Package</SourceType>
+      <SourceId>ClothesWeb</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/ClothesWeb</BasePath>
+      <RelativePath>images/products/9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>00uzrdmbnx</Fingerprint>
+      <Integrity>oPHqUoLy/VE7uNCQy9X7pLtEudRbZsdDw2x3df8NwcI=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\c740f786-56a9-4901-b43f-7cf7b2998590.png'))">
       <SourceType>Package</SourceType>
       <SourceId>ClothesWeb</SourceId>

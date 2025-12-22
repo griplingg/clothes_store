@@ -132,6 +132,18 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-bim/UstHKs5/sqvYPtZZnAx7feyJwYTV2Wig840m5gs="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100244"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022bim/UstHKs5/sqvYPtZZnAx7feyJwYTV2Wig840m5gs=\u0022"},{"Name":"Last-Modified","Value":"Tue, 16 Dec 2025 21:05:50 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ClothesWeb/images/products/9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.00uzrdmbnx.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"00uzrdmbnx"},{"Name":"integrity","Value":"sha256-oPHqUoLy/VE7uNCQy9X7pLtEudRbZsdDw2x3df8NwcI="},{"Name":"label","Value":"_content/ClothesWeb/images/products/9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"100691"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022oPHqUoLy/VE7uNCQy9X7pLtEudRbZsdDw2x3df8NwcI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 22 Dec 2025 19:54:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/ClothesWeb/images/products/9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\9c8d6124-a3b2-4404-a56b-bd4d4ed9676c.png'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-oPHqUoLy/VE7uNCQy9X7pLtEudRbZsdDw2x3df8NwcI="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=3600, must-revalidate"},{"Name":"Content-Length","Value":"100691"},{"Name":"Content-Type","Value":"image/png"},{"Name":"ETag","Value":"\u0022oPHqUoLy/VE7uNCQy9X7pLtEudRbZsdDw2x3df8NwcI=\u0022"},{"Name":"Last-Modified","Value":"Mon, 22 Dec 2025 19:54:28 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/ClothesWeb/images/products/c740f786-56a9-4901-b43f-7cf7b2998590.1yhwkrvos8.png">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\products\c740f786-56a9-4901-b43f-7cf7b2998590.png'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>

@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("ClothesWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+80bdd92f76013b4aed3e581e756cae5859ad775f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+933c626c656182b26647bdea6db65f099f39939a")]
 [assembly: System.Reflection.AssemblyProductAttribute("ClothesWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("ClothesWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
