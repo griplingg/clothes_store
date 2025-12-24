@@ -119,7 +119,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
-        public IActionResult Catalog(string searchString)
+        public IActionResult Catalog(string searchString, int? categoryId)
         {
             var products = _context.Products
                 .Where(p => p.IsDeleted == false)
@@ -132,7 +132,9 @@ namespace ClothesWeb.Controllers
             {
                 products = products.Where(p => p.Name.Contains(searchString));
             }
-        
+            if (categoryId != null)
+                products = products.Where(p => p.CategoryId == categoryId);
+
             var model = products
         .ToList()
         .GroupBy(p => p.Category)
@@ -142,6 +144,9 @@ namespace ClothesWeb.Controllers
             Products = g.ToList()
         })
         .ToList();
+
+            ViewBag.Categories = _context.Category.ToList();
+            ViewBag.SelectedCategory = categoryId;
 
             return View(model);
         }
