@@ -20,19 +20,24 @@
         
     @if (User.IsInRole("Manager"))
     {
-        <form asp-controller="Home" asp-action="Create" method="get">
-            <button type="submit" class="btn btn-primary mb-3">Добавить новый товар</button>
-        </form>
-        <br>
+        <div class="d-flex align-items-center gap-3">
 
-        <button id="showCategoryForm" class="btn btn-primary mb-3">Добавить категорию</button>
+            <form asp-controller="Home" asp-action="Create" method="get" class="m-0">
+                <button type="submit" class="btn btn-primary">Добавить новый товар</button>
+            </form>
+
+            <button id="showCategoryForm" class="btn btn-primary ">
+                Добавить категорию
+            </button>
+
+        </div>
     }
 
     
 
-    <div id="categoryFormContainer" style="display: none; margin-bottom: 20px;">
+    <div id="categoryFormContainer" style="display: none; margin-bottom: 20px; margin-top:20px;">
         <form asp-controller="Home" asp-action="AddCategory" method="post" class="form-inline">
-            <input type="text" name="Name" class="form-control me-2" placeholder="Название категории" required />
+            <input type="text" name="Name" class="form-control me-2 mb-3" placeholder="Название категории" required />
 
             <input type="hidden" name="searchString" value="@Context.Request.Query["searchString"]" />
 
