@@ -51,6 +51,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> CreateUser(CreateUserView model)
         {
             if (!ModelState.IsValid)
@@ -78,6 +79,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> AddUserToRole(string userId, string roleName)
         {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(roleName))
@@ -95,6 +97,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> RemoveUserFromRole(string userId, string roleName)
         {
             if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(roleName))
@@ -119,6 +122,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> DeleteUser(string userId)
         {
             if (string.IsNullOrEmpty(userId))

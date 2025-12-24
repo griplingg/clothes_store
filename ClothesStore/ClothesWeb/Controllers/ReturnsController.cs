@@ -16,7 +16,7 @@ namespace ClothesWeb.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "Manager,Salesman")]
         public IActionResult Index()
         {
             var returns = _context.ReturnProducts
@@ -37,7 +37,7 @@ namespace ClothesWeb.Controllers
             return View(returns);
         }
 
-
+        [Authorize(Roles = "Manager,Salesman")]
         public IActionResult CreateSelect(string? searchString)
         {
             var dateFrom = DateTime.Now.AddDays(-14);
@@ -67,7 +67,7 @@ namespace ClothesWeb.Controllers
         }
 
 
-
+        [Authorize(Roles = "Manager,Salesman")]
         public IActionResult Create(int sellItemId)
         {
             var sellItem = _context.SellItems
@@ -89,6 +89,7 @@ namespace ClothesWeb.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager,Salesman")]
         public IActionResult Create(ReturnProduct model, DateTime clientDate)
         {
  
@@ -106,6 +107,7 @@ namespace ClothesWeb.Controllers
 
       
         [Authorize(Roles = "Manager")]
+
         public IActionResult ChangeStatus(int id, string actionType)
         {
             var returnProduct = _context.ReturnProducts.FirstOrDefault(r => r.Id == id);

@@ -1,6 +1,7 @@
 ﻿
 using ClothesWeb;
 using ClothesWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -14,6 +15,7 @@ public class SellController : Controller
         _context = context;
     }
 
+    [Authorize(Roles = "Manager,Salesman")]
     public async Task<IActionResult> AddPurchase()
     {
         var products = await _context.Products.Where(p => p.IsDeleted == false).ToListAsync();
@@ -26,80 +28,10 @@ public class SellController : Controller
         return View(model);
     }
 
-    /*[HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> AddPurchase(AddPurchaseViewModel model, DateTime clientDate)
-    {
-        if (model.Items == null || model.Items.Count == 0)
-        {
-            ModelState.AddModelError("","Необходимо добавить хотя бы одну позицию товара.");
-        }
-
-        if (ModelState.IsValid)
-        {
-            var newSell = new Sell
-            {
-                Date = clientDate,
-                PaymentMethod = model.PaymentMethod,
-                EmployeeId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value
-            };
-            _context.Sells.Add(newSell);
-
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateException ex)
-            {
-                ModelState.AddModelError("", "Ошибка сохранения. Попробуйте снова.");
-                model.AllProducts = await _context.Products.ToListAsync();
-                return View(model);
-            }
-
-
-            foreach (var itemVm in model.Items)
-            {
-                var productSize = await _context.ProductSizes
-                    .FirstOrDefaultAsync(ps => ps.ProductId == itemVm.ProductId && ps.SizeId == itemVm.SizeId);
-
-                var product = await _context.Products.FindAsync(itemVm.ProductId);
-                var size = await _context.Sizes.FindAsync(itemVm.SizeId);
-
-
-                if (productSize == null || productSize.Quantity < itemVm.Quantity)
-                {
-                    ModelState.AddModelError("", $"Ошибка: Недостаточно товара '{product?.Name} ({size?.Name})'. Доступно: {productSize?.Quantity ?? 0}.");
-                    model.AllProducts = await _context.Products.ToListAsync();
-                    return View(model);
-                }
-
-                var sellItem = new SellItem
-                {
-                    SellId = newSell.Id, 
-                    ProductId = itemVm.ProductId,
-                    SizeId = itemVm.SizeId,
-                    Quantity = itemVm.Quantity,
-                    Price = product.Price,
-                    Color = product.Color
-                };
-
-                _context.SellItems.Add(sellItem);
-
-                productSize.Quantity -= itemVm.Quantity;
-            }
-
-
-            await _context.SaveChangesAsync();
-            TempData["SuccessMessage"] = "Продажа проведена успешно";
-            return RedirectToAction("AddPurchase"); 
-        }
-
-        model.AllProducts = await _context.Products.ToListAsync();
-        return View(model);
-    }*/
+    
     [HttpPost]
     [ValidateAntiForgeryToken]
+    [Authorize(Roles = "Manager,Salesman")]
     public async Task<IActionResult> AddPurchase(AddPurchaseViewModel model, DateTime clientDate)
     {
         if (model.Items == null || model.Items.Count == 0)

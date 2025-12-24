@@ -14,13 +14,14 @@ namespace ClothesWeb.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _env;
-        public HomeController(ILogger<HomeController> logger, ApplicationDbContext context, IWebHostEnvironment env)
+        public HomeController( ApplicationDbContext context, IWebHostEnvironment env)
         {
-            _logger = logger;
+           // _logger = logger;
             _context = context;
             _env = env;
         }
         [HttpGet]
+        [Authorize(Roles = "Manager,Salesman")]
         public IActionResult SupplierCatalog(string searchString)
         {
             var suppliers = _context.Supplier.Where(p => p.IsDeleted == false).AsQueryable();
@@ -119,6 +120,7 @@ namespace ClothesWeb.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = "Manager,Salesman")]
         public IActionResult Catalog(string searchString, int? categoryId)
         {
             var products = _context.Products
