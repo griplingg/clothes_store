@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestCLothesWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2d40c36d7a5c9ce5fc5079b003e53b003fdc8b6f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e0aa646f4ede5e04ba5ba206a71c559822ed3948")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestCLothesWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestCLothesWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
