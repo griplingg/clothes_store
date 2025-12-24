@@ -51,6 +51,22 @@
 
 
         <form asp-controller="Home" asp-action="Catalog" method="get">
+            <select name="categoryId" class="form-select w-25">
+                <option value="">Все категории</option>
+
+                @foreach (var c in ViewBag.Categories)
+                {
+                    if ((int?)ViewBag.SelectedCategory == c.Id)
+                    {
+                        <option value="@c.Id" selected>@c.Name</option>
+                    }
+                    else
+                    {
+                        <option value="@c.Id">@c.Name</option>
+                    }
+                }
+            </select>
+
             <input type="text" name="searchString" class="form-control w-50 me-2 mb-3"
             placeholder="Введите название товара" value="@Context.Request.Query["searchString"]" />
             <button type="submit" class="btn btn-primary">Поиск</button>
