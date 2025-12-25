@@ -132,9 +132,47 @@ namespace ClothesWeb.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+   
+    [Authorize(Roles = "Manager,Salesman")]
+        public IActionResult Edit(int id)
+        {
+            var r = _context.ReturnProducts
+                .Include(x => x.SellItem)
+                    .ThenInclude(si => si.Product)
+                .Include(x => x.SellItem)
+                    .ThenInclude(si => si.Size)
+                .FirstOrDefault(x => x.Id == id);
+
+            if (r == null)
+                return NotFound();
+
+            if (r.StatusId != 1)
+                return BadRequest("Нельзя редактировать заявку, которая уже рассмотрена");
+
+            return View(r);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Manager,Salesman")]
+        public IActionResult Edit(ReturnProduct model)
+        {
+            var r = _context.ReturnProducts.FirstOrDefault(x => x.Id == model.Id);
+
+            if (r == null)
+                return NotFound();
+
+            if (r.StatusId != 1)
+                return BadRequest("Нельзя редактировать заявку, которая уже рассмотрена");
+
+            r.Reason = model.Reason;
+            _context.SaveChanges();
+
+            return RedirectToAction(nameof(Index));
+        }
+
+
     }
 
 }
-
-
-

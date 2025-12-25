@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "iRBG35t9GJhYnw2jvAHSA0nePCHRNxpBClo3qFSXqN8=",
+  "Hash": "bKvvL8RA4J/C04t7ob2V8ZkKUnWicFOVjveFm+9np10=",
   "Source": "ClothesWeb",
   "BasePath": "_content/ClothesWeb",
   "Mode": "Default",
@@ -1417,8 +1417,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "0acjdyzct6",
-      "Integrity": "GBbcFmr3zI+oPLt34wNumGRYsYfnsX5gqeylSDymWhQ=",
+      "Fingerprint": "b0lmhutmqq",
+      "Integrity": "20zDKxJ7/qQFClXX5w5L08JO87WouxV2zp5Yv+0oBT4=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\Universal.css"
@@ -3409,7 +3409,7 @@
       ]
     },
     {
-      "Route": "css/Universal.0acjdyzct6.css",
+      "Route": "css/Universal.b0lmhutmqq.css",
       "AssetFile": "C:\\Users\\Mi\\source\\repos\\griplingg\\clothes_store\\ClothesStore\\ClothesWeb\\wwwroot\\css\\Universal.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -3419,7 +3419,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4231"
+          "Value": "4601"
         },
         {
           "Name": "Content-Type",
@@ -3427,11 +3427,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GBbcFmr3zI+oPLt34wNumGRYsYfnsX5gqeylSDymWhQ=\""
+          "Value": "\"20zDKxJ7/qQFClXX5w5L08JO87WouxV2zp5Yv+0oBT4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
+          "Value": "Thu, 25 Dec 2025 21:15:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3441,7 +3441,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "0acjdyzct6"
+          "Value": "b0lmhutmqq"
         },
         {
           "Name": "label",
@@ -3449,7 +3449,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-GBbcFmr3zI+oPLt34wNumGRYsYfnsX5gqeylSDymWhQ="
+          "Value": "sha256-20zDKxJ7/qQFClXX5w5L08JO87WouxV2zp5Yv+0oBT4="
         }
       ]
     },
@@ -3464,7 +3464,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "4231"
+          "Value": "4601"
         },
         {
           "Name": "Content-Type",
@@ -3472,11 +3472,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"GBbcFmr3zI+oPLt34wNumGRYsYfnsX5gqeylSDymWhQ=\""
+          "Value": "\"20zDKxJ7/qQFClXX5w5L08JO87WouxV2zp5Yv+0oBT4=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Tue, 16 Dec 2025 21:05:50 GMT"
+          "Value": "Thu, 25 Dec 2025 21:15:51 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -3486,7 +3486,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-GBbcFmr3zI+oPLt34wNumGRYsYfnsX5gqeylSDymWhQ="
+          "Value": "sha256-20zDKxJ7/qQFClXX5w5L08JO87WouxV2zp5Yv+0oBT4="
         }
       ]
     },
