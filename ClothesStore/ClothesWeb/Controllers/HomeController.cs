@@ -16,7 +16,7 @@ namespace ClothesWeb.Controllers
         private readonly IWebHostEnvironment _env;
         public HomeController( ApplicationDbContext context, IWebHostEnvironment env)
         {
-           // _logger = logger;
+           
             _context = context;
             _env = env;
         }

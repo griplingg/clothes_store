@@ -40,14 +40,19 @@
 {
     <div class="text-danger">@ViewData["Error"]</div>
 }
+
+@if (ViewBag.FileName != null)
+{
+    <a href="@Url.Action("DownloadStatistics", "Reports", new { fileName = ViewBag.FileName })" class="btn btn-primary">Скачать файл</a>
+}
 @if (ViewBag.TotalRevenue != null)
 {
     <hr />
     <h3>Оборот за период: <strong>@ViewBag.TotalRevenue.ToString("C")</strong></h3>
 
             @foreach (var sell in ViewBag.Sales as List<ClothesWeb.Models.Sell>)
-            { 
-                <div class="card mb-3">
+            {
+        <div class="card mb-3 sale-card">
             <div class="card-header bg-light">
                 <strong>Покупка № @sell.Id</strong><br />
                 <small>Дата: @sell.Date.ToString("yyyy-MM-dd")</small>
@@ -83,11 +88,9 @@
             </div>
         </div>
     }
+    <div id="pagination" class="mt-3"></div>
 }
-@if (ViewBag.FileName != null)
-{
-    <a href="@Url.Action("DownloadStatistics", "Reports", new { fileName = ViewBag.FileName })" class="btn btn-primary">Скачать файл</a>
-}
+
 
 <script>
     function getLocalIsoDate(date) {
@@ -98,4 +101,50 @@
     }
     document.getElementById('clientDate').value =
         getLocalIsoDate(new Date());
+
+        document.addEventListener("DOMContentLoaded", function () {
+        const cards = Array.from(document.querySelectorAll(".sale-card"));
+        const perPage = 5;
+        let currentPage = 1;
+
+        function showPage() {
+            cards.forEach((card, index) => {
+                card.style.display =
+                    index >= (currentPage - 1) * perPage && index < currentPage * perPage
+                        ? ""
+                        : "none";
+            });
+        }
+
+        function buildPagination() {
+            const pageCount = Math.ceil(cards.length / perPage);
+            const container = document.getElementById("pagination");
+            container.innerHTML = "";
+
+            for (let i = 1; i <= pageCount; i++) {
+                const btn = document.createElement("button");
+                btn.type = "button";
+                btn.innerText = i;
+                btn.classList.add("btn", "btn-outline-primary", "mx-1", "page-btn");
+
+                if (i === currentPage)
+                    btn.classList.add("active");
+
+                btn.addEventListener("click", () => {
+                    currentPage = i;
+                    showPage();
+                    document.querySelectorAll(".page-btn")
+                        .forEach(b => b.classList.remove("active"));
+                    btn.classList.add("active");
+                });
+
+                container.appendChild(btn);
+            }
+        }
+
+        if (cards.length > 0) {
+            showPage();
+            buildPagination();
+        }
+    });
 </script>

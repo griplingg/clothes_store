@@ -1,0 +1,26 @@
+﻿@model ClothesWeb.Models.ReturnProduct
+
+<h2>Редактировать заявку</h2>
+
+<form asp-action="Edit" method="post">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label>Товар</label>
+        <input class="form-control" value="@Model.SellItem.Product.Name" disabled />
+    </div>
+
+    <div class="mb-3">
+        <label>Размер</label>
+        <input class="form-control" value="@Model.SellItem.Size.Name" disabled />
+    </div>
+
+
+
+    <div class="mb-3">
+        <label asp-for="Reason"></label>
+        <textarea asp-for="Reason" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-success">Сохранить</button>
+</form>
